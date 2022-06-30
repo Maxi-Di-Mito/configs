@@ -1,0 +1,12 @@
+{
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.extensionUpdateCheck": "never",
+  "suggest.disableMenu": true,
+  "suggest.snippetIndicator": "",
+  "suggest.enablePreview":true,
+  "coc.preferences.rootPatterns":[
+    ".git",
+    ".vscode"
+  ],
+  "eslint.autoFixOnSave": true
+}
