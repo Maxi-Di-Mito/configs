@@ -1,6 +1,14 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.extensionUpdateCheck": "never",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "js",
+    "ts",
+    "jsx",
+    "vue",
+    "svelte",
+    "html"],
   "suggest.disableMenu": true,
   "suggest.snippetIndicator": "",
   "suggest.enablePreview":true,

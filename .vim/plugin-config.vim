@@ -50,3 +50,18 @@ let g:fzf_colors = {
   \ }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 autocmd VimEnter * command! -nargs=* -bang AgC call fzf#vim#ag(<q-args>, '--path-to-ignore ~/.vim/.ignore --hidden --ignore "node_modules" --ignore-dir="vendor" --skip-vcs-ignores', <bang>0)
+
+" LightLine
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+" Show full path of filename
+function! LightlineFilename()
+    return expand('%')
+endfunction
