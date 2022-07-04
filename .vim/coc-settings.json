@@ -2,19 +2,17 @@
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.extensionUpdateCheck": "never",
   "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "js",
-    "ts",
-    "jsx",
-    "vue",
-    "svelte",
-    "html"],
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ],
   "suggest.disableMenu": true,
   "suggest.snippetIndicator": "",
-  "suggest.enablePreview":true,
-  "coc.preferences.rootPatterns":[
-    ".git",
-    ".vscode"
-  ],
+  "suggest.enablePreview": true,
+  "coc.preferences.rootPatterns": [".git", ".vscode"],
   "eslint.autoFixOnSave": true
 }

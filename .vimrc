@@ -15,7 +15,7 @@ so ~/.vim/plugin-config.vim
 so ~/.vim/maps.vim
 
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = "medium"
 highligh Normal ctermbg=NONE
 set laststatus=2
 set noshowmode
