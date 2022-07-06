@@ -1,6 +1,5 @@
 set number
 set mouse=a
-set numberwidth=1
 set clipboard=unnamed
 syntax on
 set showcmd
@@ -10,6 +9,11 @@ set encoding=utf-8
 set showmatch
 set sw=2
 set relativenumber
+set signcolumn=yes " Always show signcolumn
+set updatetime=500 
+set splitright " Open vplit buffer to the right
+set iskeyword+=- " treat dash-separated-words as word text object
+set wildmenu " Enhanced tabline completion
 so ~/.vim/plugins.vim
 so ~/.vim/plugin-config.vim
 so ~/.vim/maps.vim
@@ -25,6 +29,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-"This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR><CR>
+" Clear search highlighting with escape x2
+nnoremap <silent><esc><esc> :nohlsearch<CR>
 
+" Scroll cursor offset
+let &scrolloff = &lines / 4

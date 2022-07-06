@@ -4,12 +4,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 
 " Status bar
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -31,6 +30,7 @@ Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'

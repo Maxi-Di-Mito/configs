@@ -50,18 +50,10 @@ let g:fzf_colors = {
   \ }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 autocmd VimEnter * command! -nargs=* -bang AgC call fzf#vim#ag(<q-args>, '--path-to-ignore ~/.vim/.ignore --hidden --ignore "node_modules" --ignore-dir="vendor" --skip-vcs-ignores', <bang>0)
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7, 'yoffset': '-1', 'border': 'rounded' } }
 
-" LightLine
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' ] ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
-      \ }
-" Show full path of filename
-function! LightlineFilename()
-    return expand('%')
-endfunction
+" add_list_source(name, description, command)
+call coc_fzf#common#add_list_source('fzf-buffers', 'display open buffers', 'Buffers')
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
