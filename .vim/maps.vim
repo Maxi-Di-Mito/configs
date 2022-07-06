@@ -26,9 +26,6 @@ nnoremap <silent> <Leader><C-l> :TmuxNagiateRight<cr>
 
 " gotos
 
-
-
-
-" easy motion
-nmap <Leader>s <Plug>(easymotion-s2)
+" Hop-nvim
+nmap <silent> <Leader>fw :HopChar2<cr>
 

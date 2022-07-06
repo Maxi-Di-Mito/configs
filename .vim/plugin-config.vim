@@ -57,3 +57,4 @@ call coc_fzf#common#add_list_source('fzf-buffers', 'display open buffers', 'Buff
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+

@@ -25,17 +25,19 @@ Plug 'christoomey/vim-tmux-navigator'
 " autocomplete
 "Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
-
 " IDE
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
-Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
+Plug 'phaazon/hop.nvim'
 
 call plug#end()
 
+lua << EOF
+	require'hop'.setup()
+EOF
 
 
