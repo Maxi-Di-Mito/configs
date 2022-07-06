@@ -2,13 +2,16 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
-
+Plug 'frazrepo/vim-rainbow'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -33,6 +36,8 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'phaazon/hop.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'APZelos/blamer.nvim'
 
 call plug#end()
 

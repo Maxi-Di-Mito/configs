@@ -14,12 +14,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-if has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=no
-endif
-
 let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint' ]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -58,3 +52,11 @@ call coc_fzf#common#add_list_source('fzf-buffers', 'display open buffers', 'Buff
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 
+" rainbow brackets
+let g:rainbow_active = 1
+
+" Lens auto resize
+let g:lens#height_resize_max = 30
+let g:lens#height_resize_min = 5
+let g:lens#width_resize_max = 140
+let g:lens#width_resize_min = 15
