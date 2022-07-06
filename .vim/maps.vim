@@ -16,7 +16,7 @@ nnoremap <silent> <space>fo :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <space>fs :<C-u>CocFzfList symbols<CR>
 nnoremap <silent> <space>fa :<C-u>CocFzfList<CR>
 nnoremap <silent> <space>fb :<C-u>CocFzfList fzf-buffers<CR>
-
+nnoremap <silent> <space>fd :<C-u>CocFzfList diagnostics --current-buf<CR>
 
 " tmux navigator
 nnoremap <silent> <Leader><C-h> :TmuxNavigateLeft<cr>
