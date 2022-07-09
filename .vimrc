@@ -18,8 +18,8 @@ so ~/.vim/plugins.vim
 so ~/.vim/plugin-config.vim
 so ~/.vim/maps.vim
 
+" let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = "medium"
 highligh Normal ctermbg=NONE
 set laststatus=2
 set noshowmode
@@ -33,4 +33,4 @@ set smartcase
 nnoremap <silent><esc><esc> :nohlsearch<CR>
 
 " Scroll cursor offset
-let &scrolloff = &lines / 4
+let &scrolloff = &lines / 3

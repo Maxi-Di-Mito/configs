@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'storyn26383/vim-vue'
 Plug 'frazrepo/vim-rainbow'
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -38,6 +39,7 @@ Plug 'yggdroot/indentline'
 Plug 'phaazon/hop.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'APZelos/blamer.nvim'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 

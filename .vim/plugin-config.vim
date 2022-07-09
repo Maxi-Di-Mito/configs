@@ -12,9 +12,30 @@ inoremap <silent><expr> <TAB>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr :CocCommand fzf-preview.CocReferences<CR>
+" autocmd CursorHold *.js silent call g:lens#run()
 
-let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint' ]
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-fzf-preview', '@yaegassy/coc-volar' ]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -24,6 +45,9 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Nerdtree
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let NERDTreeShowLineNumbers=1
 
 " Fzf
 
@@ -51,12 +75,13 @@ call coc_fzf#common#add_list_source('fzf-buffers', 'display open buffers', 'Buff
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme="simple"
 
 " rainbow brackets
 let g:rainbow_active = 1
 
 " Lens auto resize
-let g:lens#height_resize_max = 30
+let g:lens#height_resize_max = 80
 let g:lens#height_resize_min = 5
 let g:lens#width_resize_max = 140
 let g:lens#width_resize_min = 15

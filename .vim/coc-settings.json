@@ -14,5 +14,7 @@
   "suggest.snippetIndicator": "",
   "suggest.enablePreview": true,
   "coc.preferences.rootPatterns": [".git", ".vscode"],
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "prettier.useEditorConfig": true,
+  "prettier.printWidth": 160
 }
