@@ -2,8 +2,6 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
-Plug 'storyn26383/vim-vue'
-Plug 'frazrepo/vim-rainbow'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -20,7 +18,6 @@ Plug 'scrooloose/nerdtree'
 " Typing
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
-" Plug 'tpope/vim-surround'
 
 " Tmux
 Plug 'benmills/vimux'
@@ -30,6 +27,7 @@ Plug 'christoomey/vim-tmux-navigator'
 "Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 " IDE
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -39,12 +37,29 @@ Plug 'yggdroot/indentline'
 Plug 'phaazon/hop.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'APZelos/blamer.nvim'
-Plug 'majutsushi/tagbar'
 
 call plug#end()
 
-lua << EOF
+lua <<EOF
 	require'hop'.setup()
-EOF
 
+	local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+	if not status_ok then
+		return
+	end
+
+	configs.setup({
+		ensure_installed = {"javascript", "typescript", "lua", "vue", "json", "html", "css"}, -- one of "all" or a list of languages
+		ignore_install = { "" }, -- List of parsers to ignore installing
+		highlight = {
+			enable = true, -- false will disable the whole extension
+			disable = "", -- list of language that will be disabled
+		},
+		autopairs = {
+			enable = true,
+		},
+		indent = { enable = true, disable = { "python", "css" } },
+		auto_install = true
+	})
+EOF
 

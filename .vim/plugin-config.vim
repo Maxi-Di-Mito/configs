@@ -77,11 +77,9 @@ call coc_fzf#common#add_list_source('fzf-buffers', 'display open buffers', 'Buff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="simple"
 
-" rainbow brackets
-let g:rainbow_active = 1
-
 " Lens auto resize
-let g:lens#height_resize_max = 80
+let g:lens#height_resize_max = 30
 let g:lens#height_resize_min = 5
 let g:lens#width_resize_max = 140
 let g:lens#width_resize_min = 15
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
