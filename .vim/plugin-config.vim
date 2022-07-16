@@ -9,6 +9,17 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
 
+" Check if backspace was just pressed      
+function! s:check_back_space() abort                    
+  let col = col('.') - 1    
+  return !col || getline('.')[col - 1]  =~# '\s'    
+endfunction
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
+
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -35,7 +46,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-fzf-preview', '@yaegassy/coc-volar' ]
+let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-fzf-preview', '@yaegassy/coc-volar', 'coc-tailwindcss' ]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -78,7 +89,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="simple"
 
 " Lens auto resize
-let g:lens#height_resize_max = 30
+let g:lens#height_resize_max = 80
 let g:lens#height_resize_min = 5
 let g:lens#width_resize_max = 140
 let g:lens#width_resize_min = 15

@@ -8,13 +8,15 @@
     "json",
     "javascriptreact",
     "typescript.tsx",
-    "graphql"
+    "graphql",
+    "html"
   ],
   "suggest.disableMenu": true,
   "suggest.snippetIndicator": "",
   "suggest.enablePreview": true,
   "coc.preferences.rootPatterns": [".git", ".vscode"],
   "eslint.autoFixOnSave": true,
-  "prettier.useEditorConfig": true,
-  "prettier.printWidth": 160
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.codeActionsOnSave.rules": ["!debugger"],
+  "prettier.useEditorConfig": true
 }
