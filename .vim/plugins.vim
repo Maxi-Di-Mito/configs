@@ -5,6 +5,7 @@ Plug 'sheerun/vim-polyglot'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'pantharshit00/vim-prisma'
 
 " Themes
 Plug 'morhetz/gruvbox'

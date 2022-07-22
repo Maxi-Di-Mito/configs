@@ -27,5 +27,5 @@ nnoremap <silent> <Leader><C-l> :TmuxNagiateRight<cr>
 " gotos
 
 " Hop-nvim
-nmap <silent> <Leader>h :HopChar2<cr>
+nnoremap <silent> <Leader>j :HopChar2<cr>
 

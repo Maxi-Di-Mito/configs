@@ -46,7 +46,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-fzf-preview', '@yaegassy/coc-volar', 'coc-tailwindcss' ]
+let g:coc_global_extensions = [ 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-fzf-preview', '@yaegassy/coc-volar', 'coc-tailwindcss', 'coc-angular' ]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 

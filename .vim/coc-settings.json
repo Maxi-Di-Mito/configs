@@ -9,7 +9,8 @@
     "javascriptreact",
     "typescript.tsx",
     "graphql",
-    "html"
+    "html",
+    "prisma"
   ],
   "suggest.disableMenu": true,
   "suggest.snippetIndicator": "",
