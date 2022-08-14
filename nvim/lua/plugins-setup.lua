@@ -1,4 +1,4 @@
-require'hop'.setup()
+require 'hop'.setup()
 
 local lsp = require('lsp-zero')
 
@@ -6,6 +6,9 @@ lsp.preset('recommended')
 lsp.nvim_workspace();
 lsp.setup();
 
+-- lsp.configure('volar',{
+--
+-- })
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
@@ -25,10 +28,10 @@ require("nvim-tree").setup({
   },
 })
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
 
-  ensure_installed = {"javascript", "typescript", "lua", "vue", "json", "html", "css"}, -- one of "all" or a list of languages
+  ensure_installed = { "javascript", "typescript", "lua", "vue", "json", "html", "css" }, -- one of "all" or a list of languages
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   -- Automatically install missing parsers when entering buffer
@@ -57,7 +60,7 @@ vim.g['lens#height_resize_max'] = 80
 vim.g['lens#height_resize_min'] = 5
 vim.g['lens#width_resize_max'] = 140
 vim.g['lens#width_resize_min'] = 20
-vim.g['lens#disabled_filetypes'] = {'nerdtree', 'fzf'}
+vim.g['lens#disabled_filetypes'] = { 'nerdtree', 'fzf' }
 
 require('lualine').setup({
   options = {

@@ -43,7 +43,7 @@ map('n','<leader>fo',':DocumentSymbols<cr>')
 map('n','<leader>fd',':Trouble<cr>') -- Diagnostics
 
 -- Hop
-map('n','<leader>j',':HopChar2<cr>')
+map('n','s',':HopChar2<cr>')
 
 -- save and quit mapping
 map('n','<leader>w',':w<cr>')

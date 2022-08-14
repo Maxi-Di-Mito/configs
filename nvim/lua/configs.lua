@@ -18,6 +18,8 @@ opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 opt.scrolloff = 20
 vim.cmd "set noshowmode"
+vim.cmd "set noshowcmd"
+
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
@@ -94,6 +96,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 
+
 vim.api.nvim_create_autocmd({'CursorHold'},{pattern = "*", command = 'lua vim.lsp.diagnostic.show_position_diagnostics()'})
 -- vim.api.nvim_create_autocmd({'CursorHoldI'},{pattern = "*", command = 'lua vim.lsp.buf.signature_help()'})
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
@@ -101,3 +104,4 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   { focus = false }
 )
 
+vim.g.vim_json_syntax_conceal = 0
