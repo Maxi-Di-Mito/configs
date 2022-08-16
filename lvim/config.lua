@@ -150,6 +150,15 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
     end,
   },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require('treesitter-context').setup()
+    end
+  },
+  {
+    'MunifTanjim/prettier.nvim'
+  }
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",
@@ -172,10 +181,20 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-require 'user.options'
-require 'user.telescope'
 
+-- setup extra lenguage servers
 local tail = require 'lspconfig'.tailwindcss
 if tail then
   tail.setup {}
 end
+
+
+local eslint = require 'lspconfig'.eslint
+if eslint then
+  eslint.setup {}
+end
+
+
+require 'user.options'
+require 'user.telescope'
+-- require 'user.nullls'
