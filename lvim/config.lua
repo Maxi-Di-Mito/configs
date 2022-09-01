@@ -45,6 +45,7 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+-- vim.lsp.buf.formatting_sync(nil, 2000)
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -64,6 +65,7 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.indent.enable = true
 
 -- generic LSP settings
 
@@ -105,6 +107,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
+
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 -- local formatters = require "lvim.lsp.null-ls.formatters"
@@ -157,8 +160,18 @@ lvim.plugins = {
     end
   },
   {
-    'MunifTanjim/prettier.nvim'
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("indent_blankline").setup {
+        -- for example, context is off by default, use this to turn it on
+        show_current_context = true,
+        show_current_context_start = true,
+      }
+    end
   }
+  -- {
+  --   'MunifTanjim/prettier.nvim'
+  -- }
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",
@@ -183,18 +196,20 @@ lvim.plugins = {
 -- })
 
 -- setup extra lenguage servers
-local tail = require 'lspconfig'.tailwindcss
-if tail then
-  tail.setup {}
-end
-
 
 local eslint = require 'lspconfig'.eslint
 if eslint then
   eslint.setup {}
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+    command = 'EslintFixAll'
+  })
 end
+
 
 
 require 'user.options'
 require 'user.telescope'
 -- require 'user.nullls'
+require 'user.lualine'
+require 'user.lsp'
