@@ -16,19 +16,19 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- ESLINT
--- local eslint = require 'lspconfig'.eslint
--- if eslint then
---   eslint.setup {
---     filetypes = {
---       "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"
---     },
---     eslint_enable_diagnostics = true,
---   }
---   vim.api.nvim_create_autocmd("BufWritePre", {
---     pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
---     command = 'EslintFixAll'
---   })
--- end
+local eslint = require 'lspconfig'.eslint
+if eslint then
+  eslint.setup {
+    filetypes = {
+      "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"
+    },
+    eslint_enable_diagnostics = true,
+  }
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+    command = 'EslintFixAll'
+  })
+end
 
 
 -- CSS

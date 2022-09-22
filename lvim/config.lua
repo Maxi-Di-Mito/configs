@@ -103,6 +103,6 @@ lvim.plugins = {
 
 require 'user.builtinsOptions'
 require 'user.telescope'
-require 'user.nullls'
+-- require 'user.nullls'
 require 'user.lualine'
 require 'user.lsp'

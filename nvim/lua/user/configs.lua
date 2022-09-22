@@ -12,6 +12,9 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
+opt.backup = false
+opt.writebackup = false
+opt.cmdheight = 2
 opt.mouse = 'a' -- Enable mouse support
 opt.clipboard = 'unnamedplus' -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
@@ -19,7 +22,10 @@ opt.completeopt = 'menuone,noinsert,noselect' -- Autocomplete options
 opt.scrolloff = 20
 vim.cmd "set noshowmode"
 vim.cmd "set noshowcmd"
-
+opt.undofile = true
+vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.pumheight = 10 -- pop up menu height
+vim.opt.showtabline = 2 -- always show tabs
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
@@ -62,6 +68,9 @@ opt.updatetime = 300 -- ms to wait for trigger an event
 -- Disable nvim intro
 opt.shortmess:append "sI"
 
+vim.g.vim_json_syntax_conceal = 0
+
+
 -- -- Disable builtin plugins
 local disabled_built_ins = {
   "2html_plugin",
@@ -94,15 +103,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   g["loaded_" .. plugin] = 1
 end
-
-
-
-vim.api.nvim_create_autocmd({ 'CursorHold' },
-  { pattern = "*", command = 'lua vim.lsp.diagnostic.show_position_diagnostics()' })
--- vim.api.nvim_create_autocmd({'CursorHoldI'},{pattern = "*", command = 'lua vim.lsp.buf.signature_help()'})
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-  vim.lsp.handlers.signature_help,
-  { focus = false }
-)
-
-vim.g.vim_json_syntax_conceal = 0
