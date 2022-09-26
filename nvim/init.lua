@@ -13,6 +13,7 @@ require('user.nvim-tree')
 require('user.treesitter')
 require('user.lsp-zero')
 require('user.which-key')
+require('user.null-ls')
 
-pcall(vim.cmd, 'colorscheme nightfox')
+pcall(vim.cmd, 'colorscheme gruvbox-flat')
 require('user.lualine')

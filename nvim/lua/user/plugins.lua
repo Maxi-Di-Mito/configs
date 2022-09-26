@@ -89,8 +89,7 @@ return packer.startup(function(use)
   use 'joshdick/onedark.vim'
   use "EdenEast/nightfox.nvim"
   use 'LunarVim/onedarker.nvim'
-
-  use 'morhetz/gruvbox'
+  use 'eddyekofo94/gruvbox-flat.nvim'
   -- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -114,6 +113,8 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
+
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   use {
     'nvim-treesitter/nvim-treesitter',

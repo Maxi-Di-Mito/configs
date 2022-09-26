@@ -29,6 +29,7 @@ vim.opt.showtabline = 2 -- always show tabs
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
+vim.g.gruvbox_flat_style = "dark"
 opt.number = true -- Show line number
 opt.relativenumber = true
 opt.signcolumn = 'yes'
