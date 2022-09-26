@@ -54,7 +54,6 @@ return packer.startup(function(use)
   use 'jiangmiao/auto-pairs'
   use 'APZelos/blamer.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'RRethy/vim-illuminate'
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -88,6 +87,7 @@ return packer.startup(function(use)
   }
   -- Tema
   use 'joshdick/onedark.vim'
+  use "EdenEast/nightfox.nvim"
   use 'LunarVim/onedarker.nvim'
 
   use 'morhetz/gruvbox'
