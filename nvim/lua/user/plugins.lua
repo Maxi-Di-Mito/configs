@@ -85,11 +85,14 @@ return packer.startup(function(use)
       'nvim-lua/plenary.nvim'
     }
   }
-  -- Tema
+  -- Themes
   use 'joshdick/onedark.vim'
   use "EdenEast/nightfox.nvim"
   use 'LunarVim/onedarker.nvim'
   use 'eddyekofo94/gruvbox-flat.nvim'
+  use 'folke/tokyonight.nvim'
+
+
   -- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',

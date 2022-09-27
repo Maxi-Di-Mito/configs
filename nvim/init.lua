@@ -14,6 +14,6 @@ require('user.treesitter')
 require('user.lsp-zero')
 require('user.which-key')
 require('user.null-ls')
+require('user.lualine')
 
 pcall(vim.cmd, 'colorscheme gruvbox-flat')
-require('user.lualine')
