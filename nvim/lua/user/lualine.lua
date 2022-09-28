@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'gruvbox-flat',
+    theme = 'nightfox',
     globalstatus = false,
     disabled_filetypes = { 'packer', 'NvimTree' },
     refresh = {
@@ -16,11 +16,8 @@ require('lualine').setup({
     },
   },
   inactive_sections = {
-
     lualine_a = {},
-
     lualine_b = {},
-
     lualine_c = {
       {
         'filename',
@@ -28,9 +25,7 @@ require('lualine').setup({
       },
     },
     lualine_x = { 'filetype', 'location' },
-
     lualine_y = {},
-
     lualine_z = {}
 
   },

@@ -4,34 +4,24 @@ if not ok then
   return
 end
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 local sources = {
   null.builtins.diagnostics.eslint_d.with {
+    condition = function(utils)
+      return utils.root_has_file({ ".eslinrc.json", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml" })
+    end,
     diagnostic_config = {
       virtual_text = true
     },
+    disabled_filetypes = { 'vue', 'svelte' }
   },
+  null.builtins.code_actions.eslint_d,
   null.builtins.formatting.eslint_d,
+  null.builtins.formatting.prettier.with {
+    filetypes = { 'json', 'markdown', 'html', 'yaml', 'css', 'scss', 'less' }
+  },
   null.builtins.formatting.stylua,
 }
 
-
-
-
 null.setup {
   sources = sources,
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_seq_sync()
-        end,
-      })
-    end
-  end,
 }

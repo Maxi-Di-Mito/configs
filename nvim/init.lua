@@ -16,4 +16,4 @@ require('user.which-key')
 require('user.null-ls')
 require('user.lualine')
 
-pcall(vim.cmd, 'colorscheme gruvbox-flat')
+pcall(vim.cmd, 'colorscheme nightfox')

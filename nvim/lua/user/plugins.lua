@@ -63,7 +63,7 @@ return packer.startup(function(use)
     'sunjon/shade.nvim',
     config = function()
       require 'shade'.setup({
-        overlay_opacity = 30,
+        overlay_opacity = 50,
         opacity_step = 1,
         keys = {
           brightness_up   = '<C-Up>',
@@ -142,6 +142,8 @@ return packer.startup(function(use)
       require("nvim-ts-autotag").setup { enable = true }
     end
   }
+  --fix cursorhold autocmds with LSP (check if updating neovim fixes)
+  use 'antoinemadec/FixCursorHold.nvim'
 
   -- Git
   use "lewis6991/gitsigns.nvim"

@@ -9,7 +9,14 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 )
 
 -- format on save
---vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = "*", command = "LspZeroFormat!" })
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
+  callback = function()
+    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+    vim.lsp.buf.formatting_seq_sync()
+  end,
+})
 
 
 -- hightlight on YANK

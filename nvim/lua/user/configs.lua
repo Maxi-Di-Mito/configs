@@ -70,6 +70,7 @@ opt.updatetime = 300 -- ms to wait for trigger an event
 opt.shortmess:append "sI"
 
 vim.g.vim_json_syntax_conceal = 0
+vim.g.cursorhold_updatetime = 100
 
 
 -- -- Disable builtin plugins
