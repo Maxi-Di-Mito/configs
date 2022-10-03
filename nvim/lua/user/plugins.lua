@@ -54,6 +54,13 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	use({
+		"kyazdani42/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup()
+		end,
+	})
+
+	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
@@ -119,12 +126,7 @@ return packer.startup(function(use)
 	})
 	use("p00f/nvim-ts-rainbow")
 
-	use({
-		"nvim-treesitter/nvim-treesitter-context",
-		config = function()
-			require("treesitter-context").setup()
-		end,
-	})
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	use("norcalli/nvim-colorizer.lua")
 

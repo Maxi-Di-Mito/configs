@@ -15,13 +15,13 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)
 opt.backup = false
 opt.writebackup = false
 opt.cmdheight = 2
-opt.mouse = 'a' -- Enable mouse support
-opt.clipboard = 'unnamedplus' -- Copy/paste to system clipboard
+opt.mouse = "a" -- Enable mouse support
+opt.clipboard = "unnamedplus" -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
-opt.completeopt = 'menuone,noinsert,noselect' -- Autocomplete options
+opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.scrolloff = 20
-vim.cmd "set noshowmode"
-vim.cmd "set noshowcmd"
+vim.cmd("set noshowmode")
+vim.cmd("set noshowcmd")
 opt.undofile = true
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.pumheight = 10 -- pop up menu height
@@ -32,10 +32,10 @@ vim.opt.showtabline = 2 -- always show tabs
 --[[ vim.g.gruvbox_flat_style = "dark" ]]
 opt.number = true -- Show line number
 opt.relativenumber = true
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.showmatch = true -- Highlight matching parenthesis
 opt.cursorline = true
-opt.foldmethod = 'marker' -- Enable folding (default 'foldmarker')
+opt.foldmethod = "marker" -- Enable folding (default 'foldmarker')
 -- opt.colorcolumn = '100'      -- Line lenght marker at 80 columns
 opt.splitright = true -- Vertical split to the right
 opt.splitbelow = true -- Horizontal split to the bottom
@@ -62,46 +62,44 @@ opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 240 -- Max column for syntax highlight
 opt.updatetime = 300 -- ms to wait for trigger an event
 
-
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
 -- Disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 vim.g.vim_json_syntax_conceal = 0
 vim.g.cursorhold_updatetime = 100
 
-
 -- -- Disable builtin plugins
 local disabled_built_ins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "tar",
-  "tarPlugin",
-  "rrhelper",
-  "spellfile_plugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-  "tutor",
-  "rplugin",
-  "synmenu",
-  "optwin",
-  "compiler",
-  "bugreport",
-  "ftplugin",
+	"2html_plugin",
+	"getscript",
+	"getscriptPlugin",
+	"gzip",
+	"logipat",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"matchit",
+	"tar",
+	"tarPlugin",
+	"rrhelper",
+	"spellfile_plugin",
+	"vimball",
+	"vimballPlugin",
+	"zip",
+	"zipPlugin",
+	"tutor",
+	"rplugin",
+	"synmenu",
+	"optwin",
+	"compiler",
+	"bugreport",
+	"ftplugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-  g["loaded_" .. plugin] = 1
+	g["loaded_" .. plugin] = 1
 end
