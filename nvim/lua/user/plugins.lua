@@ -50,7 +50,6 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	use("jiangmiao/auto-pairs")
-	use("APZelos/blamer.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 
 	use({
@@ -63,20 +62,6 @@ return packer.startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({
-		"sunjon/shade.nvim",
-		config = function()
-			require("shade").setup({
-				overlay_opacity = 50,
-				opacity_step = 1,
-				keys = {
-					brightness_up = "<C-Up>",
-					brightness_down = "<C-Down>",
-					toggle = "<Leader>s",
-				},
-			})
-		end,
 	})
 
 	use("gpanders/editorconfig.nvim")

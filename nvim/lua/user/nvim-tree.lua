@@ -36,9 +36,12 @@ nvim_tree.setup({
 		update_cwd = true,
 		ignore_list = {},
 	},
+	filters = {
+		dotfiles = false,
+	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		timeout = 500,
 	},
 	view = {

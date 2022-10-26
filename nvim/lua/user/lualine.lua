@@ -1,6 +1,6 @@
 require("lualine").setup({
 	options = {
-		theme = "nightfox",
+		theme = "tokyonight",
 		globalstatus = false,
 		disabled_filetypes = { "packer", "NvimTree" },
 		refresh = {

@@ -16,7 +16,7 @@ opt.backup = false
 opt.writebackup = false
 opt.cmdheight = 2
 opt.mouse = "a" -- Enable mouse support
-opt.clipboard = "unnamedplus" -- Copy/paste to system clipboard
+opt.clipboard:append("unnamedplus") -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
 opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
 opt.scrolloff = 20
@@ -26,6 +26,7 @@ opt.undofile = true
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.showtabline = 2 -- always show tabs
+vim.opt.backspace = "indent,eol,start"
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------

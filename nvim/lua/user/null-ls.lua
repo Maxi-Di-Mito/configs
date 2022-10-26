@@ -18,12 +18,12 @@ local sources = {
 		diagnostic_config = {
 			virtual_text = true,
 		},
-		disabled_filetypes = { "vue", "svelte" },
+		disabled_filetypes = { "svelte" },
 	}),
 	null.builtins.code_actions.eslint_d,
 	null.builtins.formatting.eslint_d,
 	null.builtins.formatting.prettier.with({
-		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
+		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less", "vue" },
 	}),
 	null.builtins.formatting.stylua,
 }
