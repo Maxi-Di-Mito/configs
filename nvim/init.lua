@@ -17,4 +17,4 @@ require("user.null-ls")
 require("user.lualine")
 require("user.colorizer")
 
-pcall(vim.cmd, "colorscheme nightfox")
+pcall(vim.cmd, "colorscheme tokyonight-moon")

@@ -2,6 +2,7 @@ require("colorizer").setup({
 	"css",
 	"javascript",
 	"html",
+	"vue",
 }, {
 	mode = "background",
 	RRGGBBAA = false, -- #RRGGBBAA hex codes
