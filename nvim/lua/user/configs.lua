@@ -19,7 +19,7 @@ opt.mouse = "a" -- Enable mouse support
 opt.clipboard:append("unnamedplus") -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
 opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
-opt.scrolloff = 20
+opt.scrolloff = 25
 vim.cmd("set noshowmode")
 vim.cmd("set noshowcmd")
 opt.undofile = true

@@ -7,23 +7,24 @@ end
 local sources = {
 	null.builtins.diagnostics.eslint_d.with({
 		condition = function(utils)
-			return utils.root_has_file({
-				".eslinrc.json",
-				".eslintrc.js",
-				".eslintrc.cjs",
-				".eslintrc.yaml",
-				".eslintrc.yml",
-			})
+			return true
+				or utils.root_has_file({
+					".eslinrc.json",
+					".eslintrc.js",
+					".eslintrc.cjs",
+					".eslintrc.yaml",
+					".eslintrc.yml",
+				})
 		end,
 		diagnostic_config = {
 			virtual_text = true,
 		},
-		disabled_filetypes = { "svelte" },
+		disabled_filetypes = { "svelte", "vue" },
 	}),
 	null.builtins.code_actions.eslint_d,
 	null.builtins.formatting.eslint_d,
 	null.builtins.formatting.prettier.with({
-		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less", "vue" },
+		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
 	}),
 	null.builtins.formatting.stylua,
 }

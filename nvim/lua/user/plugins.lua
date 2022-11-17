@@ -130,9 +130,29 @@ return packer.startup(function(use)
 	--fix cursorhold autocmds with LSP (check if updating neovim fixes)
 	use("antoinemadec/FixCursorHold.nvim")
 
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+	use("tpope/vim-surround")
+
+	use("alexghergh/nvim-tmux-navigation")
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	use("b0o/schemastore.nvim")
+	--[[ use({ ]]
+	--[[ 	"levouh/tint.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("tint").setup() ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 
 	use("akinsho/bufferline.nvim")
 

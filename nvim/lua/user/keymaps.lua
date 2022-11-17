@@ -21,11 +21,11 @@ map("", "<down>", "<nop>")
 map("", "<left>", "<nop>")
 map("", "<right>", "<nop>")
 
--- move between splits
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+-- move between splits | REPLACE WITH TMUX NAVIGATOR PLUGIN
+--[[ map("n", "<C-h>", "<C-w>h") ]]
+--[[ map("n", "<C-j>", "<C-w>j") ]]
+--[[ map("n", "<C-k>", "<C-w>k") ]]
+--[[ map("n", "<C-l>", "<C-w>l") ]]
 
 -- Resize with arrows REVISAR
 map("n", "<C-Up>", ":resize +2<CR>")

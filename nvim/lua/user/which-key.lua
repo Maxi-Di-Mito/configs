@@ -152,10 +152,11 @@ local mappings = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		d = { "<cmd>Diagnostics<cr>", "Buffer Diagnostics" },
-		w = { "<cmd>DiagnosticsAll<cr>", "Diagnostics" },
+		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Diagnostics" },
 		f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync({},4000)<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>Mason<cr>", "Mason Info" },
+		K = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
 		j = {
 			vim.diagnostic.goto_next,
 			"Next Diagnostic",
