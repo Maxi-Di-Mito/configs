@@ -123,6 +123,9 @@ return packer.startup(function(use)
 	})
 	use({
 		"windwp/nvim-ts-autotag",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+		},
 		config = function()
 			require("nvim-ts-autotag").setup({ enable = true })
 		end,
@@ -130,17 +133,6 @@ return packer.startup(function(use)
 	--fix cursorhold autocmds with LSP (check if updating neovim fixes)
 	use("antoinemadec/FixCursorHold.nvim")
 
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
 	use("tpope/vim-surround")
 
 	use("alexghergh/nvim-tmux-navigation")
@@ -162,4 +154,19 @@ return packer.startup(function(use)
 	-- fzf
 	use({ "junegunn/fzf", dir = "~/.fzf", run = "./install --all" })
 	use({ "junegunn/fzf.vim" })
+
+	-- Debugging
+	--[[ use({ ]]
+	--[[ 	"mfussenegger/nvim-dap", ]]
+	--[[ 	opt = true, ]]
+	--[[ 	event = "BufReadPre", ]]
+	--[[ 	module = { "dap" }, ]]
+	--[[ 	wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" }, ]]
+	--[[ 	requires = { ]]
+	--[[ 		"theHamsta/nvim-dap-virtual-text", ]]
+	--[[ 		"rcarriga/nvim-dap-ui", ]]
+	--[[ 		"nvim-telescope/telescope-dap.nvim", ]]
+	--[[ 		{ "jbyuki/one-small-step-for-vimkind", module = "osv" }, ]]
+	--[[ 	}, ]]
+	--[[ }) ]]
 end)
