@@ -12,10 +12,16 @@ local function hasRootEslintConfig(utils)
 		".eslintrc.yaml",
 		".eslintrc.yml",
 	})
-	return result
+	return true or result
 end
 
 local sources = {
+	null.builtins.diagnostics.golangci_lint.with({
+		diagnostic_config = {
+			virtual_text = true,
+		},
+		extra_args = { "--fix", "true" },
+	}),
 	null.builtins.diagnostics.eslint.with({
 		condition = hasRootEslintConfig,
 		diagnostic_config = {
@@ -33,6 +39,7 @@ local sources = {
 		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
 	}),
 	null.builtins.formatting.stylua,
+	null.builtins.formatting.gofmt,
 }
 
 null.setup({
