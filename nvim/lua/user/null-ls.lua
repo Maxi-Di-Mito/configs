@@ -3,8 +3,17 @@ local ok, null = pcall(require, "null-ls")
 if not ok then
 	return
 end
+
+local function exists(filename)
+	local ok, null = pcall(vim.cmd, "find . -iname " .. filename)
+	return ok
+end
+
+-- find . -iname '*.jpg'
+
 -- NO WORK, DISABLED to ALWAYS TRUE, check later
 local function hasRootEslintConfig(utils)
+	local result2 = exists(".eslintrc*")
 	local result = utils.root_has_file({
 		".eslinrc.json",
 		".eslintrc.js",
@@ -28,13 +37,29 @@ local sources = {
 			virtual_text = true,
 		},
 		disabled_filetypes = { "svelte" },
+		filetypes = { "vue" },
 	}),
 	null.builtins.code_actions.eslint.with({
 		condition = hasRootEslintConfig,
+		filetypes = { "vue" },
 	}),
 	null.builtins.formatting.eslint.with({
 		condition = hasRootEslintConfig,
+		filetypes = { "vue" },
 	}),
+	null.builtins.diagnostics.eslint_d.with({
+		diagnostic_config = {
+			virtual_text = true,
+		},
+		disabled_filetypes = { "svelte", "vue" },
+	}),
+	null.builtins.formatting.eslint_d.with({
+		disabled_filetypes = { "svelte", "vue" },
+	}),
+	null.builtins.code_actions.eslint_d.with({
+		disabled_filetypes = { "svelte", "vue" },
+	}),
+
 	null.builtins.formatting.prettier.with({
 		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
 	}),

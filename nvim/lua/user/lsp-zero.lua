@@ -14,7 +14,7 @@ local cmp = require("cmp")
 cmp.setup(mergedConfig)
 
 lsp.on_attach(function(client, bufnr)
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_exec(
 			[[
     augroup lsp_document_highlight

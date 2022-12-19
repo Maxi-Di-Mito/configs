@@ -67,7 +67,7 @@ return {
 		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -126,7 +126,7 @@ return {
 		select = false,
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 		native_menu = false,
 	},
 }

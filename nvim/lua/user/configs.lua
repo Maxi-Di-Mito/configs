@@ -19,7 +19,7 @@ opt.mouse = "a" -- Enable mouse support
 opt.clipboard:append("unnamedplus") -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
 opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
-opt.scrolloff = 25
+opt.scrolloff = 20
 vim.cmd("set noshowmode")
 vim.cmd("set noshowcmd")
 opt.undofile = true
@@ -42,7 +42,7 @@ opt.splitright = true -- Vertical split to the right
 opt.splitbelow = true -- Horizontal split to the bottom
 opt.ignorecase = true -- Ignore case letters when search
 opt.smartcase = true -- Ignore lowercase for the whole pattern
-opt.linebreak = true -- Wrap on word boundary
+opt.linebreak = false -- Wrap on word boundary
 opt.termguicolors = true -- Enable 24-bit RGB colors
 opt.laststatus = 3 -- Set global statusline
 
@@ -60,7 +60,7 @@ opt.smartindent = true -- Autoindent new lines
 opt.hidden = true -- Enable background buffers
 opt.history = 100 -- Remember N lines in history
 opt.lazyredraw = true -- Faster scrolling
-opt.synmaxcol = 240 -- Max column for syntax highlight
+opt.synmaxcol = 140 -- Max column for syntax highlight
 opt.updatetime = 300 -- ms to wait for trigger an event
 
 -----------------------------------------------------------

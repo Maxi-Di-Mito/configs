@@ -42,10 +42,6 @@ return packer.startup(function(use)
 	-- Packer puede actualizarse solo
 	use("wbthomason/packer.nvim")
 
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
-	})
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
