@@ -140,7 +140,7 @@ export NODE_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/mr_modules
 export NODE_MODULE_BIN_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/node_modules/db-migrate/bin
 export PATH=$PATH:$NODE_MODULE_BIN_PATH
 export PATH=$PATH:/Users/maximiliano.dimito/.local/bin
-export BAT_THEME=TwoDark
+export BAT_THEME=tokyo-theme-moon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

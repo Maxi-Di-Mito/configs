@@ -14,4 +14,4 @@ vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>]])
 vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-h> <nop>]])
 vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-l> <nop>]])
 
-vim.env.BAT_THEME = "TwoDark"
+vim.env.BAT_THEME = "tokyo-theme-moon"

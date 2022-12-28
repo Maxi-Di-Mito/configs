@@ -1,7 +1,7 @@
 require("lualine").setup({
 	options = {
 		theme = "tokyonight",
-		globalstatus = false,
+		globalstatus = true,
 		disabled_filetypes = { "packer", "NvimTree" },
 		refresh = {
 			statusline = 300,
@@ -14,6 +14,12 @@ require("lualine").setup({
 				path = 1,
 			},
 		},
+	},
+	winbar = {
+		lualine_c = { { "filename", path = 1 } },
+	},
+	inactive_winbar = {
+		lualine_c = { { "filename", path = 1 } },
 	},
 	inactive_sections = {
 		lualine_a = {},

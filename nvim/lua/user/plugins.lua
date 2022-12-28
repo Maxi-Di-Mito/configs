@@ -69,10 +69,6 @@ return packer.startup(function(use)
 		},
 	})
 	-- Themes
-	use("joshdick/onedark.vim")
-	use("EdenEast/nightfox.nvim")
-	use("LunarVim/onedarker.nvim")
-	use("eddyekofo94/gruvbox-flat.nvim")
 	use("folke/tokyonight.nvim")
 
 	-- LSP
@@ -135,12 +131,6 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	use("b0o/schemastore.nvim")
-	--[[ use({ ]]
-	--[[ 	"levouh/tint.nvim", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("tint").setup() ]]
-	--[[ 	end, ]]
-	--[[ }) ]]
 
 	use("akinsho/bufferline.nvim")
 

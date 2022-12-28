@@ -1,7 +1,6 @@
 node_modules
 **/node_modules/**
 .gitignore
-Dockefile
 .dockerignore
 tophat/src/ngscripts/ngTophat.js
 packer_compiled.lua
