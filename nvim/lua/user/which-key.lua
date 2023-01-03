@@ -95,14 +95,6 @@ local mappings = {
 			"<cmd>BufferLineCloseRight<cr>",
 			"Close all to the right",
 		},
-		D = {
-			"<cmd>BufferLineSortByDirectory<cr>",
-			"Sort by directory",
-		},
-		L = {
-			"<cmd>BufferLineSortByExtension<cr>",
-			"Sort by language",
-		},
 	},
 	e = {
 		"<cmd>NvimTreeToggle<cr>",
@@ -177,7 +169,6 @@ local mappings = {
 	},
 	s = {
 		name = "Search",
-		s = { "<cmd>HopChar2<cr>", "Hop" },
 		f = { "<cmd>Files<cr>", "Find File" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },

@@ -11,11 +11,6 @@ require("user.gitsigns")
 require("user.indent-blankline")
 require("user.nvim-tree")
 require("user.treesitter")
---
---[[ require("user.lsp.lsp-config") ]]
---[[ require("user.lsp.mason")  ]]
---[[ require("user.lsp.lspsaga")  ]]
---
 require("user.tmux-navigator")
 require("user.lsp-zero")
 require("user.which-key")

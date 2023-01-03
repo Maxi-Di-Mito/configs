@@ -7,6 +7,13 @@ require("lualine").setup({
 			statusline = 300,
 		},
 	},
+	filetype_names = {
+		TelescopePrompt = "Telescope",
+		dashboard = "Dashboard",
+		packer = "Packer",
+		fzf = "FZF",
+		alpha = "Alpha",
+	},
 	sections = {
 		lualine_c = {
 			{
@@ -15,6 +22,11 @@ require("lualine").setup({
 			},
 		},
 	},
+	--[[ tabline = { ]]
+	--[[ 	lualine_a = { ]]
+	--[[ 		{ "buffers", symbols = { alternate_file = "" } }, ]]
+	--[[ 	}, ]]
+	--[[ }, ]]
 	winbar = {
 		lualine_c = { { "filename", path = 1 } },
 	},
