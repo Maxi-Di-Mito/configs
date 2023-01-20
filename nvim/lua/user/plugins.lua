@@ -141,6 +141,26 @@ return packer.startup(function(use)
 	use({ "junegunn/fzf", dir = "~/.fzf", run = "./install --all" })
 	use({ "junegunn/fzf.vim" })
 
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		module = { "dap" },
+		requires = {
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+			"nvim-telescope/telescope-dap.nvim",
+			{ "leoluz/nvim-dap-go", module = "dap-go" },
+			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+			{ "mxsdev/nvim-dap-vscode-js" },
+			{
+				"microsoft/vscode-js-debug",
+				opt = true,
+				run = "npm install --legacy-peer-deps && npm run compile",
+			},
+		},
+		disable = false,
+	})
 	-- Debugging
 	--[[ use({ ]]
 	--[[ 	"mfussenegger/nvim-dap", ]]
