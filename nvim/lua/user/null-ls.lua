@@ -61,10 +61,11 @@ local sources = {
 	}),
 
 	null.builtins.formatting.prettier.with({
-		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
+		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less", "vue" },
 	}),
 	null.builtins.formatting.stylua,
 	null.builtins.formatting.gofmt,
+	null.builtins.formatting.rustfmt,
 }
 
 null.setup({
