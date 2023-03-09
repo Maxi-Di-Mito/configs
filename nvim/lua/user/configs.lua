@@ -36,6 +36,7 @@ opt.relativenumber = true
 opt.signcolumn = "yes"
 opt.showmatch = true -- Highlight matching parenthesis
 opt.cursorline = true
+opt.cursorlineopt = "screenline,number"
 opt.foldmethod = "marker" -- Enable folding (default 'foldmarker')
 -- opt.colorcolumn = '100'      -- Line lenght marker at 80 columns
 opt.splitright = true -- Vertical split to the right
@@ -61,7 +62,7 @@ opt.hidden = true -- Enable background buffers
 opt.history = 100 -- Remember N lines in history
 opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 140 -- Max column for syntax highlight
-opt.updatetime = 300 -- ms to wait for trigger an event
+opt.updatetime = 200 -- ms to wait for trigger an event
 
 -----------------------------------------------------------
 -- Startup

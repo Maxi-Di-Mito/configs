@@ -1,29 +1,51 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
+-- Recommended preset
+lsp.preset({
+  suggest_lsp_servers = true,
+  setup_servers_on_start = true,
+  set_lsp_keymaps = true,
+  configure_diagnostics = true,
+  cmp_capabilities = true,
+  manage_nvim_cmp = true,
+  call_servers = "local",
+  sign_icons = {
+    error = "✘",
+    warn = "▲",
+    hint = "⚑",
+    info = "",
+  },
+})
 lsp.nvim_workspace()
-
-lsp.setup()
 
 -- CMP custom config
 local cmpConfig = require("user.cmp")
 
 local mergedConfig = lsp.defaults.cmp_config(cmpConfig)
 
-local cmp = require("cmp")
-cmp.setup(mergedConfig)
+lsp.setup_nvim_cmp(mergedConfig)
 
 lsp.on_attach(function(client, bufnr)
-	if client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_exec(
-			[[
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_exec(
+      [[
     augroup lsp_document_highlight
       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
     augroup END
 
   ]],
-			false
-		)
-	end
+      false
+    )
+  end
 end)
+
+lsp.configure("volar", {
+  settings = {
+    format = {
+      initialIndent = true,
+    },
+  },
+})
+
+lsp.setup()

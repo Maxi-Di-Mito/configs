@@ -1,6 +1,5 @@
 --[[ vim.api.nvim_create_autocmd({ 'CursorHoldI' }, { pattern = "*", command = 'lua vim.lsp.buf.signature_help()' }) ]]
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focus = false })
-
+--[[ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focus = false }) ]]
 -- format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {

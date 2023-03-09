@@ -51,6 +51,21 @@ local setup = {
 	},
 }
 
+local normalOpts = {
+	mode = "n",
+	silent = true,
+	noremap = true,
+}
+
+local normalMappings = {
+	g = {
+		name = "Go To's",
+		d = { "<cmd>Definitions<CR>", "Definition" },
+		r = { "<cmd>References<CR>", "References" },
+		l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
+	},
+}
+
 local opts = {
 	mode = "n", -- NORMAL mode
 	prefix = "<leader>",
@@ -108,7 +123,6 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-
 	-- " Available Debug Adapters:
 	-- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
 	-- " Adapter configuration and installation instructions:
@@ -186,4 +200,5 @@ local which_key = require("which-key")
 which_key.setup(setup)
 
 which_key.register(mappings, opts)
+which_key.register(normalMappings, normalOpts)
 which_key.register(vmappings, vopts)
