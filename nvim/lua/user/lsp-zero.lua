@@ -25,6 +25,12 @@ local mergedConfig = lsp.defaults.cmp_config(cmpConfig)
 
 lsp.setup_nvim_cmp(mergedConfig)
 
+-- where to activate virtual text diagnostics for lsp
+local items = {
+      ["rust_analyzer"] = true,
+      ["lua_ls"] = true,
+}
+
 lsp.on_attach(function(client, bufnr)
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
@@ -37,6 +43,16 @@ lsp.on_attach(function(client, bufnr)
   ]],
       false
     )
+  end
+
+  if items[client.name] then
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
+  else
+    vim.diagnostic.config({
+      virtual_text = false,
+    })
   end
 end)
 
