@@ -188,6 +188,7 @@ local mappings = {
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		t = { "<cmd>Agc<cr>", "Text" },
+		s = { "<cmd>CustomBLines<cr>", "Text in Buffer" },
 	},
 	T = {
 		name = "Treesitter",
