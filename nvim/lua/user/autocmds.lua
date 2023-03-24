@@ -5,8 +5,8 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup,
 	callback = function()
-		-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-		vim.lsp.buf.formatting_seq_sync({}, 2000)
+		vim.lsp.buf.format({ async = false, timeout_ms = 2000 })
+		--[[ vim.lsp.buf.formatting_seq_sync({}, 2000) ]]
 	end,
 })
 

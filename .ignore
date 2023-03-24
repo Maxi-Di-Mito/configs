@@ -5,3 +5,4 @@ node_modules
 tophat/src/ngscripts/ngTophat.js
 packer_compiled.lua
 **/__snapshots__/**
+**/vueBundle/**

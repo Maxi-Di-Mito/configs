@@ -144,3 +144,4 @@ export BAT_THEME=tokyo-theme-moon
 alias fp="~/configs/fp.sh"
 alias fvim="~/configs/fvim.sh"
 alias gvim="~/configs/gvim.sh"
+alias cls=clear
