@@ -62,12 +62,7 @@ return packer.startup(function(use)
 
 	use("gpanders/editorconfig.nvim")
 
-	use({
-		"gfanto/fzf-lsp.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
+	use("nvim-lua/plenary.nvim")
 	-- Themes
 	use("folke/tokyonight.nvim")
 	use("ellisonleao/gruvbox.nvim")
@@ -136,10 +131,13 @@ return packer.startup(function(use)
 
 	use("folke/which-key.nvim")
 
-	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 	-- fzf
+	use({
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 	use({ "junegunn/fzf", dir = "~/.fzf", run = "./install --all" })
-	use({ "junegunn/fzf.vim" })
 
 	--[[ use({ ]]
 	--[[ 	"mfussenegger/nvim-dap", ]]

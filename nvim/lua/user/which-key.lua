@@ -60,8 +60,8 @@ local normalOpts = {
 local normalMappings = {
 	g = {
 		name = "Go To's",
-		d = { "<cmd>Definitions<CR>", "Definition" },
-		r = { "<cmd>References<CR>", "References" },
+		d = { "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", "Definition" },
+		r = { "<cmd>lua require('fzf-lua').lsp_references()<CR>", "References" },
 		l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
 	},
 }
@@ -93,13 +93,13 @@ local mappings = {
 	["q"] = { "<cmd>q<cr>", "Quit" },
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
 	["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
-	["f"] = { "<cmd>Files<cr>", "Find File" },
+	["f"] = { "<cmd>lua require('fzf-lua').files()<cr>", "Find File" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	b = {
 		name = "Buffers",
 		b = { "<cmd>b#<cr>", "Back" },
 		j = { "<cmd>BufferLinePick<cr>", "Jump" },
-		f = { "<cmd>Buffers<cr>", "Find" },
+		f = { "<cmd>lua require('fzf-lua').buffers()<cr>", "Find" },
 		-- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
 		e = {
 			"<cmd>BufferLinePickClose<cr>",
@@ -142,12 +142,12 @@ local mappings = {
 			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 			"Undo Stage Hunk",
 		},
-		o = { "<cmd>GFiles?<cr>", "Open changed file" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		o = { "<cmd>lua require('fzf-lua').git_status()<cr>", "Open changed file" },
+		b = { "<cmd>lua require('fzf-lua').git_branches()<cr>", "Checkout branch" },
+		c = { "<cmd>lua require('fzf-lua').git_bcommits()<cr>", "Checkout commit" },
 		C = {
-			"<cmd>Telescope git_bcommits<cr>",
-			"Checkout commit(for current file)",
+			"<cmd>lua require('fzf-lua').git_commits()<cr>",
+			"Checkout commit(workspace)",
 		},
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
@@ -157,7 +157,7 @@ local mappings = {
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = { "<cmd>Diagnostics<cr>", "Buffer Diagnostics" },
+		d = { "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", "Buffer Diagnostics" },
 		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Diagnostics" },
 		f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync({},4000)<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
@@ -174,21 +174,21 @@ local mappings = {
 		l = { vim.lsp.codelens.run, "CodeLens Action" },
 		q = { vim.diagnostic.setloclist, "Quickfix" },
 		r = { vim.lsp.buf.rename, "Rename" },
-		s = { "<cmd>DocumentSymbols<cr>", "Document Symbols" },
+		s = { "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", "Document Symbols" },
 		S = {
-			"<cmd>WorkspaceSymbols<cr>",
+			"<cmd>lua require('fzf-lua').lsp_workspace_symbols()<cr>",
 			"Workspace Symbols",
 		},
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 	},
 	s = {
 		name = "Search",
-		f = { "<cmd>Files<cr>", "Find File" },
-		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+		f = { "<cmd>lua require('fzf-lua').files()<cr>", "Find File" },
+		M = { "<cmd>lua require('fzf-lua').man_pages()<cr>", "Man Pages" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
-		t = { "<cmd>Agc<cr>", "Text" },
-		s = { "<cmd>CustomBLines<cr>", "Text in Buffer" },
+		t = { "<cmd>lua require('fzf-lua').live_grep()<cr>", "Text" },
+		s = { "<cmd>lua require('fzf-lua').blines()<cr>", "Text in Buffer" },
 	},
 	T = {
 		name = "Treesitter",
