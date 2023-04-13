@@ -15,7 +15,7 @@ require("user.tmux-navigator")
 require("user.lsp-zero")
 require("user.which-key")
 require("user.null-ls")
-require("user.lualine")
 require("user.colorizer")
 require("user.colorscheme")
+require("user.lualine")
 --[[ require("user.dap") ]]
