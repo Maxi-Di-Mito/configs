@@ -24,7 +24,6 @@ local cmpConfig = require("user.cmp")
 local mergedConfig = lsp.defaults.cmp_config(cmpConfig)
 
 lsp.setup_nvim_cmp(mergedConfig)
-
 -- where to activate virtual text diagnostics for lsp
 local items = {
       ["rust_analyzer"] = true,
