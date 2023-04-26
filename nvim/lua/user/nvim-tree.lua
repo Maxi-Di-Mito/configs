@@ -45,4 +45,3 @@ nvim_tree.setup({
 		relativenumber = false,
 	},
 })
-print("setupeado el nvim tree")
