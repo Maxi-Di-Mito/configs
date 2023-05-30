@@ -93,7 +93,12 @@ local mappings = {
 	["q"] = { "<cmd>q<cr>", "Quit" },
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
 	["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
-	["f"] = { "<cmd>lua require('fzf-lua').files()<cr>", "Find File" },
+
+	--[[ lua require('fzf-lua').files({cmd ='ag --hidden --ignore .git --path-to-ignore ~/configs/.ignore -g ""'}) ]]
+	["f"] = {
+		"<cmd>lua require('fzf-lua').files({cmd ='ag --hidden --ignore .git --path-to-ignore ~/configs/.ignore -g \"\"'})<cr>",
+		"Find File",
+	},
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	b = {
 		name = "Buffers",

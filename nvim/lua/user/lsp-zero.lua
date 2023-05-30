@@ -2,19 +2,19 @@ local lsp = require("lsp-zero")
 
 -- Recommended preset
 lsp.preset({
-  suggest_lsp_servers = true,
-  setup_servers_on_start = true,
-  set_lsp_keymaps = true,
-  configure_diagnostics = true,
-  cmp_capabilities = true,
-  manage_nvim_cmp = true,
-  call_servers = "local",
-  sign_icons = {
-    error = "✘",
-    warn = "▲",
-    hint = "⚑",
-    info = "",
-  },
+	suggest_lsp_servers = true,
+	setup_servers_on_start = true,
+	set_lsp_keymaps = true,
+	configure_diagnostics = true,
+	cmp_capabilities = true,
+	manage_nvim_cmp = true,
+	call_servers = "local",
+	sign_icons = {
+		error = "✘",
+		warn = "▲",
+		hint = "⚑",
+		info = "",
+	},
 })
 lsp.nvim_workspace()
 
@@ -26,14 +26,16 @@ local mergedConfig = lsp.defaults.cmp_config(cmpConfig)
 lsp.setup_nvim_cmp(mergedConfig)
 -- where to activate virtual text diagnostics for lsp
 local items = {
-      ["rust_analyzer"] = true,
-      ["lua_ls"] = true,
+	["rust_analyzer"] = true,
+	["lua_ls"] = true,
 }
 
+local navic = require("nvim-navic")
+
 lsp.on_attach(function(client, bufnr)
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_exec(
-      [[
+	if client.server_capabilities.documentHighlightProvider then
+		vim.api.nvim_exec(
+			[[
     augroup lsp_document_highlight
       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
@@ -41,27 +43,30 @@ lsp.on_attach(function(client, bufnr)
     augroup END
 
   ]],
-      false
-    )
-  end
+			false
+		)
+	end
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 
-  if items[client.name] then
-    vim.diagnostic.config({
-      virtual_text = true,
-    })
-  else
-    vim.diagnostic.config({
-      virtual_text = false,
-    })
-  end
+	if items[client.name] then
+		vim.diagnostic.config({
+			virtual_text = true,
+		})
+	else
+		vim.diagnostic.config({
+			virtual_text = false,
+		})
+	end
 end)
 
 lsp.configure("volar", {
-  settings = {
-    format = {
-      initialIndent = true,
-    },
-  },
+	settings = {
+		format = {
+			initialIndent = true,
+		},
+	},
 })
 
 lsp.setup()

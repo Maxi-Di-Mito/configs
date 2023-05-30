@@ -5,8 +5,8 @@ if not ok then
 end
 
 local function exists(filename)
-	local ok, null = pcall(vim.cmd, "find . -iname " .. filename)
-	return ok
+	local exist, _ = pcall(vim.cmd, "find . -iname " .. filename)
+	return exist
 end
 
 -- find . -iname '*.jpg'
@@ -61,7 +61,7 @@ local sources = {
 	}),
 
 	null.builtins.formatting.prettier.with({
-		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less", "vue" },
+		filetypes = { "json", "markdown", "html", "yaml", "css", "scss", "less" },
 	}),
 	null.builtins.formatting.stylua,
 	null.builtins.formatting.gofmt,

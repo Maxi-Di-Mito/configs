@@ -135,6 +135,7 @@ export NODE_MODULE_BIN_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/
 export PATH=$PATH:$NODE_MODULE_BIN_PATH
 export PATH=$PATH:/Users/maximiliano.dimito/.local/bin
 export PATH=${PATH}:/usr/local/Cellar/graphicsmagick/1.3.40_1/bin
+
 export TERM=alacritty
 # BAT config
 export BAT_THEME=tokyo-theme-moon
@@ -142,6 +143,7 @@ export BAT_THEME=tokyo-theme-moon
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #comands with fzf
+alias azf="~/configs/azf.sh"
 alias fp="~/configs/fp.sh"
 alias fvim="~/configs/fvim.sh"
 alias gvim="~/configs/gvim.sh"

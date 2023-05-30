@@ -8,7 +8,7 @@ require("user.bufferline")
 require("user.comment")
 require("user.fzf")
 require("user.gitsigns")
-require("user.indent-blankline")
+--[[ require("user.indent-blankline") ]]
 require("user.nvim-tree")
 require("user.treesitter")
 require("user.tmux-navigator")
