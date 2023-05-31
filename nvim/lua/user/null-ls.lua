@@ -13,7 +13,7 @@ end
 
 -- NO WORK, DISABLED to ALWAYS TRUE, check later
 local function hasRootEslintConfig(utils)
-	local result2 = exists(".eslintrc*")
+	--[[ local result2 = exists(".eslintrc*") ]]
 	local result = utils.root_has_file({
 		".eslinrc.json",
 		".eslintrc.js",
@@ -21,7 +21,7 @@ local function hasRootEslintConfig(utils)
 		".eslintrc.yaml",
 		".eslintrc.yml",
 	})
-	return true or result
+	return result
 end
 
 local sources = {
