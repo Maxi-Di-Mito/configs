@@ -4,11 +4,6 @@ if not ok then
 	return
 end
 
-local function exists(filename)
-	local exist, _ = pcall(vim.cmd, "find . -iname " .. filename)
-	return exist
-end
-
 -- find . -iname '*.jpg'
 
 -- NO WORK, DISABLED to ALWAYS TRUE, check later
@@ -71,3 +66,14 @@ local sources = {
 null.setup({
 	sources = sources,
 })
+
+function FormatWithoutVolar(doAsync)
+	doAsync = doAsync or false
+	vim.lsp.buf.format({
+		async = false,
+		timeout_ms = 4000,
+		filter = function(client)
+			return client.name ~= "volar"
+		end,
+	})
+end

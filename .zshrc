@@ -100,6 +100,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+PATH="${HOME}/Library/Python/3.8/bin:${PATH}"
+
+#Madison-Reed ENVS
+export NODE_ENV=local
+export CMS_ENV=dev
+export NODE_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/mr_modules
+export NODE_MODULE_BIN_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/node_modules/db-migrate/bin
+export PATH=$PATH:$NODE_MODULE_BIN_PATH
+export PATH=$PATH:/Users/maximiliano.dimito/.local/bin
+export PATH=${PATH}:/usr/local/Cellar/graphicsmagick/1.3.40_1/bin
+
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -124,17 +138,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-PATH="${HOME}/Library/Python/3.8/bin:${PATH}"
-
-#Madison-Reed ENVS
-export NODE_ENV=local
-export CMS_ENV=dev
-export NODE_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/mr_modules
-export NODE_MODULE_BIN_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/node_modules/db-migrate/bin
-export PATH=$PATH:$NODE_MODULE_BIN_PATH
-export PATH=$PATH:/Users/maximiliano.dimito/.local/bin
-export PATH=${PATH}:/usr/local/Cellar/graphicsmagick/1.3.40_1/bin
 
 export TERM=alacritty
 # BAT config
