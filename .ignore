@@ -1,8 +1,7 @@
 node_modules
 **/node_modules/**
-.gitignore
-.dockerignore
 tophat/src/ngscripts/ngTophat.js
 packer_compiled.lua
 **/__snapshots__/**
 **/vueBundle/**
+.git
