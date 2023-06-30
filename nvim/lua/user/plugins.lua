@@ -135,6 +135,7 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 
 	use("folke/which-key.nvim")
+	use("onsails/lspkind-nvim")
 
 	-- fzf
 	use({

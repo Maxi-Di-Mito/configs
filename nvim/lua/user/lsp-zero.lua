@@ -63,8 +63,14 @@ end)
 
 lsp.configure("volar", {
 	settings = {
-		format = {
-			initialIndent = true,
+		volar = {
+			format = {
+				initialIndent = {
+					html = true,
+					javascript = true,
+					typescript = true,
+				},
+			},
 		},
 	},
 })

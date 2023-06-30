@@ -5,7 +5,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup,
 	callback = function()
-		FormatWithoutVolar()
+		FormattingFunction()
 		--[[ vim.lsp.buf.format({ async = false, timeout_ms = 2000 }) ]]
 		--[[ vim.lsp.buf.formatting_seq_sync({}, 2000) ]]
 	end,

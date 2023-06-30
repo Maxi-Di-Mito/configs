@@ -61,19 +61,26 @@ local sources = {
 	null.builtins.formatting.stylua,
 	null.builtins.formatting.gofmt,
 	null.builtins.formatting.rustfmt,
+	null.builtins.diagnostics.luacheck.with({
+		extra_args = { "--global vim" },
+	}),
 }
 
 null.setup({
 	sources = sources,
 })
 
-function FormatWithoutVolar(doAsync)
+--[[ local clientsToDilter = { ]]
+--[[   'prettier' ]]
+--[[ } ]]
+
+function FormattingFunction(doAsync)
 	doAsync = doAsync or false
 	vim.lsp.buf.format({
-		async = false,
+		async = doAsync,
 		timeout_ms = 4000,
-		filter = function(client)
-			return client.name ~= "volar"
+		filter = function()
+			return true
 		end,
 	})
 end
