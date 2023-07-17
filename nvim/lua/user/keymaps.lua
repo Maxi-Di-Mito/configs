@@ -26,6 +26,10 @@ map("", "<right>", "<nop>")
 --[[ map("n", "<C-j>", "<C-w>j") ]]
 --[[ map("n", "<C-k>", "<C-w>k") ]]
 --[[ map("n", "<C-l>", "<C-w>l") ]]
+--
+-- Jump with linecursor in the middle
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- Resize with arrows REVISAR
 map("n", "<C-Up>", ":resize +2<CR>")

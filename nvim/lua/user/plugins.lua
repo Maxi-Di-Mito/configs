@@ -146,6 +146,18 @@ return packer.startup(function(use)
 	use({ "junegunn/fzf", dir = "~/.fzf", run = "./install --all" })
 
 	use({
+		"aaronhallaert/advanced-git-search.nvim",
+		config = function()
+			require("advanced_git_search.fzf").setup({
+				-- Insert Config here
+			})
+		end,
+		requires = {
+			-- Insert Dependencies here
+		},
+	})
+
+	use({
 		"mfussenegger/nvim-dap",
 		opt = true,
 		module = { "dap" },

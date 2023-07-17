@@ -69,6 +69,8 @@ lsp.configure("volar", {
 					html = true,
 					javascript = true,
 					typescript = true,
+					css = true,
+					scss = true,
 				},
 			},
 		},

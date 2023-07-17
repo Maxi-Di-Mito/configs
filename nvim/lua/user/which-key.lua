@@ -184,6 +184,20 @@ local mappings = {
 			"<cmd>lua require('fzf-lua').lsp_workspace_symbols()<cr>",
 			"Workspace Symbols",
 		},
+		v = {
+			function()
+				vim.diagnostic.show(nil, 0, nil, { virtual_text = false })
+				print("virtualText off")
+			end,
+			"Virtual text off",
+		},
+		V = {
+			function()
+				vim.diagnostic.show(nil, 0, nil, { virtual_text = true })
+				print("virtualText on")
+			end,
+			"Virtual text on",
+		},
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 	},
 	s = {

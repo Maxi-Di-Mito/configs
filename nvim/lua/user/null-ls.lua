@@ -26,33 +26,38 @@ local sources = {
 		},
 		extra_args = { "--fix", "true" },
 	}),
-	null.builtins.diagnostics.eslint.with({
-		condition = hasRootEslintConfig,
-		diagnostic_config = {
-			virtual_text = true,
-		},
-		disabled_filetypes = { "svelte" },
-		filetypes = { "vue" },
-	}),
-	null.builtins.code_actions.eslint.with({
-		condition = hasRootEslintConfig,
-		filetypes = { "vue" },
-	}),
-	null.builtins.formatting.eslint.with({
-		condition = hasRootEslintConfig,
-		filetypes = { "vue" },
-	}),
+	--[[ null.builtins.diagnostics.eslint.with({ ]]
+	--[[ 	condition = hasRootEslintConfig, ]]
+	--[[ 	diagnostic_config = { ]]
+	--[[ 		virtual_text = true, ]]
+	--[[ 	}, ]]
+	--[[ 	disabled_filetypes = { "svelte" }, ]]
+	--[[ 	filetypes = { "vue" }, ]]
+	--[[ 	diagnostics_format = "#{m} [#{c}]", ]]
+	--[[ }), ]]
+	--[[ null.builtins.code_actions.eslint.with({ ]]
+	--[[ 	condition = hasRootEslintConfig, ]]
+	--[[ 	filetypes = { "vue" }, ]]
+	--[[ }), ]]
+	--[[ null.builtins.formatting.eslint.with({ ]]
+	--[[ 	condition = hasRootEslintConfig, ]]
+	--[[ 	filetypes = { "vue" }, ]]
+	--[[ }), ]]
 	null.builtins.diagnostics.eslint_d.with({
+		condition = hasRootEslintConfig,
 		diagnostic_config = {
 			virtual_text = true,
 		},
-		disabled_filetypes = { "svelte", "vue" },
+		diagnostics_format = "#{m} [#{c}]",
+		disabled_filetypes = { "svelte" },
 	}),
 	null.builtins.formatting.eslint_d.with({
-		disabled_filetypes = { "svelte", "vue" },
+		condition = hasRootEslintConfig,
+		disabled_filetypes = { "svelte" },
 	}),
 	null.builtins.code_actions.eslint_d.with({
-		disabled_filetypes = { "svelte", "vue" },
+		condition = hasRootEslintConfig,
+		disabled_filetypes = { "svelte" },
 	}),
 
 	null.builtins.formatting.prettier.with({
