@@ -2,6 +2,7 @@ require("user.configs")
 require("user.keymaps")
 require("user.autocmds")
 
+--[[ require("user.lazy-plugins") ]]
 require("user.plugins")
 require("user.autopairs")
 require("user.bufferline")

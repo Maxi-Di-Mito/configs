@@ -42,11 +42,10 @@ return packer.startup(function(use)
 	-- Packer puede actualizarse solo
 	use("wbthomason/packer.nvim")
 
-	use("numToStr/Comment.nvim") -- Easily comment stuff
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use({ "numToStr/Comment.nvim", tag = "v0.8.0" }) -- Easily comment stuff
+	use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "7f625207f225eea97ef7a6abe7611e556c396d2f" })
 
-	use("jiangmiao/auto-pairs")
-	use("lukas-reineke/indent-blankline.nvim")
+	use({ "lukas-reineke/indent-blankline.nvim", tag = "v2.20.a" })
 
 	use({
 		"kyazdani42/nvim-web-devicons",
@@ -58,9 +57,11 @@ return packer.startup(function(use)
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
+		commit = "e6da6f74d89de65258ea7e98e22103ff5de6dcf5",
 	})
 	use({
 		"nvim-lualine/lualine.nvim",
+		commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
@@ -134,14 +135,14 @@ return packer.startup(function(use)
 
 	use("akinsho/bufferline.nvim")
 
-	use("folke/which-key.nvim")
+	use({ "folke/which-key.nvim", commit = "bf09a25bdc9a83bcc69d2cf078e680368676513b" })
 	use("onsails/lspkind-nvim")
 
 	-- fzf
 	use({
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
-		requires = { "nvim-tree/nvim-web-devicons" },
+		requires = { "nvim-tree/nvim-web-devicons", "junegunn/fzf" },
 	})
 	use({ "junegunn/fzf", dir = "~/.fzf", run = "./install --all" })
 
@@ -175,7 +176,7 @@ return packer.startup(function(use)
 				run = "npm install --legacy-peer-deps && npm run compile",
 			},
 		},
-		disable = false,
+		disable = true,
 	})
 	-- Debugging
 	--[[ use({ ]]

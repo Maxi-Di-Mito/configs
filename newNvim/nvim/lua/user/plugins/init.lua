@@ -1,0 +1,198 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	--[[ "numToStr/Comment.nvim", ]]
+	--[[ "JoosepAlviste/nvim-ts-context-commentstring", ]]
+	--[[ "lukas-reineke/indent-blankline.nvim", ]]
+	{
+		"kyazdani42/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup()
+		end,
+	},
+	--[[ { ]]
+	--[[ 	"SmiteshP/nvim-navic", ]]
+	--[[ 	dependencies = "neovim/nvim-lspconfig", ]]
+	--[[ }, ]]
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("user.plugins.lualine")
+		end,
+	},
+	"gpanders/editorconfig.nvim",
+	"nvim-lua/plenary.nvim",
+	-- Themes
+	--[[ "folke/tokyonight.nvim", ]]
+	{
+		"EdenEast/nightfox.nvim",
+		config = function()
+			require("user.plugins.nightfox")
+		end,
+	},
+	--[[ "ellisonleao/gruvbox.nvim", ]]
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		config = function()
+			require("user.plugins.lsp-zero")
+		end,
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ -- Optional
+				"williamboman/mason.nvim",
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("user.plugins.null-ls")
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
+		},
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "lua", "vim", "vimdoc", "query", "typescript", "javascript", "html" },
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true, disable = { "yaml" } },
+				rainbow = {
+					enable = true,
+					extended_mode = true,
+					max_file_lines = nil,
+				},
+				autopairs = {
+					enable = true,
+				},
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
+				},
+			})
+			require("treesitter-context").setup()
+		end,
+	},
+	"p00f/nvim-ts-rainbow",
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({
+				"*",
+			}, {
+				mode = "background",
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				names = true,
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
+		end,
+	},
+	{
+		"kyazdani42/nvim-tree.lua",
+		dependencies = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icons
+		},
+		config = function()
+			require("user.plugins.nvim-tree")
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("nvim-ts-autotag").setup({ enable = true })
+		end,
+	},
+
+	"tpope/vim-surround",
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			local nvim_tmux_nav = require("nvim-tmux-navigation")
+			nvim_tmux_nav.setup({
+				disable_when_zoomed = true, -- defaults to false
+			})
+			vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+			vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+			vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+			vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+			vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+			vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+		end,
+	},
+	-- Git
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("user.plugins.gitsigns")
+		end,
+	},
+	"b0o/schemastore.nvim",
+
+	--[[ "akinsho/bufferline.nvim", ]]
+
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("user.plugins.which-key")
+		end,
+	},
+	--[[ "onsails/lspkind-nvim", ]]
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			local fzf = require("fzf-lua")
+			fzf.setup({})
+			-- Fix to scroll on fzf popup
+			vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-j> <Down>]])
+			vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>]])
+			vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-h> <nop>]])
+			vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-l> <nop>]])
+		end,
+	},
+
+	{ "junegunn/fzf", build = "./install --all" },
+})
