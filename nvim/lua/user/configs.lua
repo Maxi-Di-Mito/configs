@@ -25,7 +25,7 @@ vim.cmd("set noshowcmd")
 opt.undofile = true
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.pumheight = 10 -- pop up menu height
-vim.opt.showtabline = 2 -- always show tabs
+vim.opt.showtabline = 0 -- always show tabs
 vim.opt.backspace = "indent,eol,start"
 -----------------------------------------------------------
 -- Neovim UI

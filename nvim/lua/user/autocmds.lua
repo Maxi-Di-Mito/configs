@@ -1,25 +1,20 @@
---[[ vim.api.nvim_create_autocmd({ 'CursorHoldI' }, { pattern = "*", command = 'lua vim.lsp.buf.signature_help()' }) ]]
---[[ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focus = false }) ]]
--- format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = augroup,
-	callback = function()
-		FormattingFunction()
-		--[[ vim.lsp.buf.format({ async = false, timeout_ms = 2000 }) ]]
-		--[[ vim.lsp.buf.formatting_seq_sync({}, 2000) ]]
-	end,
+  group = augroup,
+  callback = function()
+    FormattingFunction()
+  end,
 })
 
 -- hightlight on YANK
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	command = "silent! lua vim.highlight.on_yank()",
-	group = "highlight_yank",
+  command = "silent! lua vim.highlight.on_yank()",
+  group = "highlight_yank",
 })
 
-vim.api.nvim_create_augroup("gitsignsFixAttach", { clear = true })
-vim.api.nvim_create_autocmd({ "BufNew" }, {
-	command = "Gitsigns attach",
-	group = "gitsignsFixAttach",
-})
+--[[ vim.api.nvim_create_augroup("gitsignsFixAttach", { clear = true }) ]]
+--[[ vim.api.nvim_create_autocmd({ "BufNew" }, { ]]
+--[[ 	command = "Gitsigns attach", ]]
+--[[ 	group = "gitsignsFixAttach", ]]
+--[[ }) ]]
