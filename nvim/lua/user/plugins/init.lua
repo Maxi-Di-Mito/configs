@@ -11,9 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local options = {}
+
 require("lazy").setup({
-	--[[ "numToStr/Comment.nvim", ]]
-	--[[ "JoosepAlviste/nvim-ts-context-commentstring", ]]
+	"numToStr/Comment.nvim",
+	"JoosepAlviste/nvim-ts-context-commentstring",
 	--[[ "lukas-reineke/indent-blankline.nvim", ]]
 	{
 		"kyazdani42/nvim-web-devicons",
@@ -144,7 +146,6 @@ require("lazy").setup({
 			require("nvim-ts-autotag").setup({ enable = true })
 		end,
 	},
-
 	"tpope/vim-surround",
 	{
 		"alexghergh/nvim-tmux-navigation",
@@ -195,4 +196,4 @@ require("lazy").setup({
 	},
 
 	{ "junegunn/fzf", build = "./install --all" },
-})
+}, options)

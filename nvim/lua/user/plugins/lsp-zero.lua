@@ -62,4 +62,12 @@ lsp.configure("volar", {
   },
 })
 
+lsp.configure("tsserver", {
+  settings = {
+    diagnostics = {
+      ignoredCodes = { 7016, 80001 }, -- 7016 types , 80001 this could be a module bleh,
+    },
+  },
+})
+
 lsp.setup()
