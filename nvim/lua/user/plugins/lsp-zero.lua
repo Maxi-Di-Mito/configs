@@ -27,6 +27,8 @@ lsp.nvim_workspace()
 
 local okNavic, navic = pcall(require, "nvim-navic")
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 lsp.on_attach(function(client, bufnr)
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
@@ -41,6 +43,15 @@ lsp.on_attach(function(client, bufnr)
       false
     )
   end
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,
+    group = augroup,
+    callback = function()
+      FormattingFunction()
+    end,
+  })
+
   if client.server_capabilities.documentSymbolProvider and okNavic then
     navic.attach(client, bufnr)
   end

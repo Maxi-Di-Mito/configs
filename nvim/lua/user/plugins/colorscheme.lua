@@ -1,4 +1,5 @@
 local fox = require("nightfox")
+-- local grub = require("gruvbox")
 
 fox.setup({
 	options = {
@@ -11,10 +12,13 @@ if not okf then
 	print("there was a problem loading the colorscheme")
 end
 
---[[ hl-LspReferenceText| |hl-LspReferenceRead| ]]
---[[ |hl-LspReferenceWrite| ]]
---[[ vim.highlight. ]]
 -- hightlight with bold font the current keyword under cursor
 vim.cmd("highlight LspReferenceText gui=bold")
 vim.cmd("highlight LspReferenceRead gui=bold")
 vim.cmd("highlight LspReferenceWrite gui=bold")
+
+-- grub.setup({
+-- 	dim_inactive = true,
+-- })
+
+-- pcall(vim.cmd, "colorscheme gruvbox")
