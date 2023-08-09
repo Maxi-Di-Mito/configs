@@ -23,10 +23,10 @@ require("lazy").setup({
 			require("nvim-web-devicons").setup()
 		end,
 	},
-	--[[ { ]]
-	--[[ 	"SmiteshP/nvim-navic", ]]
-	--[[ 	dependencies = "neovim/nvim-lspconfig", ]]
-	--[[ }, ]]
+	{
+		"SmiteshP/nvim-navic",
+		dependencies = "neovim/nvim-lspconfig",
+	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
