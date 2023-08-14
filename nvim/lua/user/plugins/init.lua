@@ -52,42 +52,50 @@ require("lazy").setup({
 	--     require("user.plugins.colorscheme")
 	--   end,
 	-- },
+	-- LSP Support
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		priority = 999,
-		branch = "v2.x",
+		"neovim/nvim-lspconfig",
 		config = function()
-			require("user.plugins.lsp-zero")
+			require("user.plugins.lsp.lsp-config")
+		end,
+	}, -- Required
+	{ -- Optional
+		"williamboman/mason.nvim",
+		config = function()
+			require("user.plugins.lsp.mason")
 		end,
 		dependencies = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" }, -- Required
-			{ -- Optional
-				"williamboman/mason.nvim",
-			},
-			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "jayp0521/mason-null-ls.nvim" },
+		},
+	},
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
+	-- Autocompletion
+	{
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("user.plugins.cmp")
+		end,
+		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
 			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
+			-- Icons
+			{ "onsails/lspkind-nvim" },
 		},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		priority = 999,
+		-- priority = 999,
 		config = function()
-			require("user.plugins.null-ls")
+			require("user.plugins.lsp.null-ls")
 		end,
 	},
 	{
@@ -114,6 +122,11 @@ require("lazy").setup({
 			})
 			require("treesitter-context").setup()
 		end,
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {}, -- this is equalent to setup({}) function
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
@@ -171,7 +184,6 @@ require("lazy").setup({
 	-- Git
 	{
 		"lewis6991/gitsigns.nvim",
-		priority = 998,
 		config = function()
 			require("user.plugins.gitsigns")
 		end,
