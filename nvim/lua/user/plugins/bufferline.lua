@@ -1,11 +1,11 @@
 local ok, bufferline = pcall(require, "bufferline")
 
 if not ok then
-	return
+  return
 end
 
 bufferline.setup({
-	options = {
-		separator_style = "slant",
-	},
+  options = {
+    separator_style = "slant",
+  },
 })
