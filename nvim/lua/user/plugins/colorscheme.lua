@@ -2,14 +2,14 @@ local fox = require("nightfox")
 -- local grub = require("gruvbox")
 
 fox.setup({
-  options = {
-    dim_inactive = true,
-  },
+	options = {
+		dim_inactive = true,
+	},
 })
 
 local okf = pcall(vim.cmd, "colorscheme nightfox")
 if not okf then
-  print("there was a problem loading the colorscheme")
+	print("there was a problem loading the colorscheme")
 end
 
 -- hightlight with bold font the current keyword under cursor

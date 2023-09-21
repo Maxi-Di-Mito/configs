@@ -89,7 +89,7 @@ local simpleSetupServers = {
 	"yamlls",
 }
 
-for i, value in ipairs(simpleSetupServers) do
+for _, value in ipairs(simpleSetupServers) do
 	lspconfig[value].setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
@@ -145,7 +145,7 @@ lspconfig["tsserver"].setup({
 	on_attach = on_attach,
 	settings = {
 		diagnostics = {
-			ignoredCodes = { 7016, 80001, 6133 }, -- 7016 types , 80001 this could be a module bleh,
+			ignoredCodes = { 7016, 80001, 6133 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param
 		},
 	},
 })
