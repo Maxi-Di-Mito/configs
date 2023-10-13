@@ -59,6 +59,7 @@ opt.smartindent = true -- Autoindent new lines
 -- Memory, CPU
 -----------------------------------------------------------
 opt.hidden = true -- Enable background buffers
+opt.bufhidden = "wipe"
 opt.history = 100 -- Remember N lines in history
 opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 140 -- Max column for syntax highlight
@@ -75,33 +76,33 @@ vim.g.cursorhold_updatetime = 100
 
 -- -- Disable builtin plugins
 local disabled_built_ins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"matchit",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
-	"tutor",
-	"rplugin",
-	"synmenu",
-	"optwin",
-	"compiler",
-	"bugreport",
-	"ftplugin",
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-	g["loaded_" .. plugin] = 1
+  g["loaded_" .. plugin] = 1
 end
