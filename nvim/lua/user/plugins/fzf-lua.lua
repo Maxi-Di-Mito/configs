@@ -1,6 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
   -- optional for icon support
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "kyazdani42/nvim-web-devicons",
     { "junegunn/fzf", build = "./install --all" },

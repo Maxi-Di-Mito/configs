@@ -28,7 +28,10 @@ require("lazy").setup({
   { import = "user.plugins" },
   { import = "user.plugins.lsp" },
   "numToStr/Comment.nvim",
-  "JoosepAlviste/nvim-ts-context-commentstring",
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = { "BufReadPre", "BufNewFile" },
+  },
   {
     "kyazdani42/nvim-web-devicons",
     config = function()
@@ -54,6 +57,7 @@ require("lazy").setup({
   },
   {
     "windwp/nvim-ts-autotag",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
