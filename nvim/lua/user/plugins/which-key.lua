@@ -98,16 +98,16 @@ return {
       ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
       ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
 
-      ["f"] = {
-        "<cmd>lua require('fzf-lua').files({cmd ='ag --hidden --ignore .git --path-to-ignore ~/configs/.ignore -g \"\"'})<cr>",
-        "Find File",
-      },
+      -- ["f"] = {
+      --   "<cmd>lua require('fzf-lua').files({cmd ='ag --hidden --ignore .git --path-to-ignore ~/configs/.ignore -g \"\"'})<cr>",
+      --   "Find File",
+      -- },
       ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
       b = {
         name = "Buffers",
         b = { "<cmd>b#<cr>", "Back" },
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
-        f = { "<cmd>lua require('fzf-lua').buffers()<cr>", "Find" },
+        -- f = { "<cmd>lua require('fzf-lua').buffers()<cr>", "Find" },
         -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
         e = {
           "<cmd>BufferLinePickClose<cr>",
@@ -150,9 +150,9 @@ return {
           "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
           "Undo Stage Hunk",
         },
-        o = { "<cmd>lua require('fzf-lua').git_status()<cr>", "Open changed file" },
+        -- o = { "<cmd>lua require('fzf-lua').git_status()<cr>", "Open changed file" },
         b = { "<cmd>lua require('fzf-lua').git_branches()<cr>", "Checkout branch" },
-        c = { "<cmd>lua require('fzf-lua').git_bcommits()<cr>", "Checkout commit" },
+        -- c = { "<cmd>lua require('fzf-lua').git_bcommits()<cr>", "Checkout commit" },
         C = {
           "<cmd>lua require('fzf-lua').git_commits()<cr>",
           "Checkout commit(workspace)",

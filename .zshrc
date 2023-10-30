@@ -146,6 +146,7 @@ load-nvmrc
 export TERM=alacritty
 # BAT config
 export BAT_THEME=tokyo-theme-moon
+export ESLINT_D_LOCAL_ESLINT_ONLY="true"
 
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

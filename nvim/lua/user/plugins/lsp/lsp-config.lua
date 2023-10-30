@@ -55,7 +55,7 @@ return {
       local opts = { noremap = true, silent = true, buffer = bufnr }
 
       -- set keybinds
-      -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+      -- keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
       -- keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
       -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- see definition and make edits in window
       -- keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- go to implementation
@@ -153,6 +153,10 @@ return {
           ignoredCodes = { 7016, 80001, 6133 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param
         },
       },
+      root_dir = function(fname)
+        return lspconfig.util.root_pattern("tsconfig.json")(fname)
+          or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
+      end,
     })
   end,
 }
