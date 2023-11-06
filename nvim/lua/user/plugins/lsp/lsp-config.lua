@@ -19,6 +19,10 @@ return {
 
     local okNavic, navic = pcall(require, "nvim-navic")
 
+    navic.setup({
+      highlight = true,
+    })
+
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
     local keymap = vim.keymap -- for conciseness

@@ -69,8 +69,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git docker zsh-autosuggestions aws)
-plugins=(git docker aws)
+plugins=(git docker zsh-autosuggestions aws)
+# plugins=(git docker aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-PATH="${HOME}/Library/Python/3.8/bin:${PATH}"
+# PATH="${HOME}/Library/Python/3.8/bin:${PATH}"
 
 #Madison-Reed ENVS
 export NODE_ENV=local
@@ -146,7 +146,6 @@ load-nvmrc
 export TERM=alacritty
 # BAT config
 export BAT_THEME=tokyo-theme-moon
-export ESLINT_D_LOCAL_ESLINT_ONLY="true"
 
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

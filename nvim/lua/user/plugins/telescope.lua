@@ -10,6 +10,15 @@ return {
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
     local actions = require("telescope.actions")
+    -- local previewers = require("telescope.previewers")
+    -- local pickers = require("telescope.pickers")
+    -- local sorters = require("telescope.sorters")
+    -- local finders = require("telescope.finders")
+
+    -- local customBufferCommits = pickers.new({
+    --   results_title = "Commits",
+    --   finder = finders.new_oneshot_job({ "git" }),
+    -- })
 
     telescope.setup({
       defaults = {
@@ -54,6 +63,6 @@ return {
     keymap.set("n", "go", builtin.git_status, { desc = "Git status files" })
     -- keymap.set("v", "<leader>gc", builtin.git_bcommits_range, { desc = "Find current lines commits" })
 
-    keymap.set("n", "ls", builtin.lsp_document_symbols, { desc = "File symbols" })
+    keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "File symbols" })
   end,
 }

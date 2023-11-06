@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local options = {
   install = {
-    colorscheme = { "nightfly" },
+    -- colorscheme = { "nightfly" },
   },
   checker = {
     enabled = true,

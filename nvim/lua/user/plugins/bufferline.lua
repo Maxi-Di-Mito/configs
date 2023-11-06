@@ -1,8 +1,10 @@
 return {
   "akinsho/bufferline.nvim",
+  event = "VeryLazy",
   dependencies = {
     "kyazdani42/nvim-web-devicons",
   },
+
   config = function()
     local ok, bufferline = pcall(require, "bufferline")
 
@@ -14,6 +16,7 @@ return {
       options = {
         separator_style = "slant",
       },
+      highlights = require("catppuccin.groups.integrations.bufferline").get(),
     })
   end,
 }
