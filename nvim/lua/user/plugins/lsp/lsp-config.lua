@@ -91,7 +91,7 @@ return {
       "jsonls",
       "dockerls",
       "gopls",
-      -- "leminx", -- ver nombre o que onda
+      "lemminx",
       "svelte",
       "taplo",
       "vimls",
