@@ -30,10 +30,17 @@ return { -- Optional
       -- list of servers for mason to install
       ensure_installed = {
         "tsserver",
+        "eslint",
         "html",
         "cssls",
         "lua_ls",
         "volar",
+        "gopls",
+        "bashls",
+        "jsonls",
+        "dockerls",
+        "taplo",
+        "yamlls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -44,7 +51,7 @@ return { -- Optional
       ensure_installed = {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
-        "eslint_d", -- ts/js linter
+        -- "eslint_d", -- ts/js linter
       },
       -- auto-install configured formatters & linters (with null-ls)
       automatic_installation = true,

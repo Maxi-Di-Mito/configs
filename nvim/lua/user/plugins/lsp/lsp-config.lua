@@ -88,9 +88,7 @@ return {
       "html",
       "cssls",
       "bashls",
-      "jsonls",
       "dockerls",
-      "gopls",
       "lemminx",
       "svelte",
       "taplo",
@@ -127,6 +125,44 @@ return {
       },
     })
 
+    lspconfig["jsonls"].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        json = {
+          validate = { enable = true },
+          schemas = require("schemastore").json.schemas(),
+        },
+      },
+    })
+
+    local root_pattern = require("lspconfig.util").root_pattern
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = root_pattern(".git"),
+      codeActionOnSave = {
+        rules = { "!jsdoc/" },
+        mode = "all",
+      },
+      -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
+      settings = {
+        -- workingDirectory = { mode = "auto" },
+      },
+    })
+
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+      settings = {
+        gopls = {
+          -- see ftdetect/go.lua.
+          ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
+        },
+      },
+    })
+
     lspconfig["volar"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -154,7 +190,7 @@ return {
       on_attach = on_attach,
       settings = {
         diagnostics = {
-          ignoredCodes = { 7016, 80001, 6133 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param
+          ignoredCodes = { 7016, 80001, 6133, 80006 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param, 80006 can be an async function
         },
       },
       root_dir = function(fname)
