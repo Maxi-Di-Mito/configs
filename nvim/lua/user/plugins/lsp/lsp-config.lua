@@ -85,7 +85,6 @@ return {
     end
 
     local simpleSetupServers = {
-      "html",
       "cssls",
       "bashls",
       "dockerls",
@@ -197,6 +196,12 @@ return {
         return lspconfig.util.root_pattern("tsconfig.json")(fname)
           or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
       end,
+    })
+
+    lspconfig["html"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "html", "gohtmltmpl" },
     })
   end,
 }

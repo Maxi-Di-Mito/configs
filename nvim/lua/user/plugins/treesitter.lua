@@ -21,6 +21,9 @@ return {
         enable_autocmd = false,
       },
     })
+
+    vim.treesitter.language.register("html", "gohtmltmpl") --
+
     require("treesitter-context").setup()
   end,
 }
