@@ -60,4 +60,19 @@ local nightfox = {
   end,
 }
 
+---@diagnostic disable-next-line: unused-local
+local tokyo = {
+  "folke/tokyonight.nvim",
+  config = function()
+    require("tokyonight").setup({
+      dim_inactive = true,
+    })
+
+    vim.cmd("colorscheme tokyonight")
+
+    vim.cmd("highlight LspReferenceText gui=bold")
+    vim.cmd("highlight LspReferenceRead gui=bold")
+    vim.cmd("highlight LspReferenceWrite gui=bold")
+  end,
+}
 return catppuccin

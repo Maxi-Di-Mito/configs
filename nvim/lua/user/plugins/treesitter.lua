@@ -16,14 +16,11 @@ return {
       autopairs = {
         enable = true,
       },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
     })
 
     vim.treesitter.language.register("html", "gohtmltmpl") --
 
     require("treesitter-context").setup()
+    require("ts_context_commentstring").setup()
   end,
 }

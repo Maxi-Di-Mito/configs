@@ -26,7 +26,6 @@ return {
       }),
       null.builtins.formatting.stylua,
       null.builtins.formatting.gofmt,
-      null.builtins.formatting.rustfmt,
       null.builtins.diagnostics.luacheck.with({
         extra_args = { "--global vim" },
       }),
