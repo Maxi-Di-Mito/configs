@@ -16,6 +16,11 @@ return {
       autopairs = {
         enable = true,
       },
+      -- disable treesitter on BIG files
+      ---@diagnostic disable-next-line: unused-local
+      disable = function(lang, bufnr)
+        return vim.api.nvim_buf_line_count(bufnr) > 5000
+      end,
     })
 
     vim.treesitter.language.register("html", "gohtmltmpl") --

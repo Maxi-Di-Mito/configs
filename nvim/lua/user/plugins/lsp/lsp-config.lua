@@ -93,6 +93,7 @@ return {
       "taplo",
       "vimls",
       "yamlls",
+      "htmx",
     }
 
     for _, value in ipairs(simpleSetupServers) do

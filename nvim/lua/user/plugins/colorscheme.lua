@@ -17,7 +17,7 @@ local catppuccin = {
       },
     })
 
-    local okf = pcall(vim.cmd, "colorscheme catppuccin-macchiato")
+    local okf = pcall(vim.cmd, "colorscheme catppuccin-mocha")
     if not okf then
       print("there was a problem loading the colorscheme")
     end
