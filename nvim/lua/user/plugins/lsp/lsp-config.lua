@@ -74,7 +74,8 @@ return {
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -109,16 +110,18 @@ return {
       on_attach = on_attach,
       settings = { -- custom settings for lua
         Lua = {
+          runtime = { version = "LuaJIT" },
           -- make the language server recognize "vim" global
           diagnostics = {
-            globals = { "vim" },
+            -- globals = { "vim" },
           },
           format = { enable = false },
           workspace = {
+            checkThirdParty = false,
             -- make language server aware of runtime files
             library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
+              "${3rd}/luv/library",
+              unpack(vim.api.nvim_get_runtime_file("", true)),
             },
           },
         },
@@ -172,14 +175,16 @@ return {
         },
       },
       settings = {
-        volar = {
+        vue = {
           format = {
-            initialIndent = {
-              html = true,
-              javascript = true,
-              typescript = true,
-              css = true,
-              scss = true,
+            template = {
+              initialIndent = true,
+            },
+            script = {
+              initialIndent = true,
+            },
+            style = {
+              initialIndent = true,
             },
           },
         },
