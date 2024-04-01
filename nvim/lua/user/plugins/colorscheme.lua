@@ -1,5 +1,7 @@
 ---@diagnostic disable: param-type-mismatch
 
+LualineTheme = "catppuccin"
+
 local catppuccin = {
   "catppuccin/nvim",
   name = "catppuccin",
@@ -21,6 +23,7 @@ local catppuccin = {
     if not okf then
       print("there was a problem loading the colorscheme")
     end
+    LualineTheme = "catppuccin"
 
     vim.cmd("highlight LspReferenceText gui=bold")
     vim.cmd("highlight LspReferenceRead gui=bold")
@@ -46,6 +49,7 @@ local nightfox = {
     if not okf then
       print("there was a problem loading the colorscheme")
     end
+    LualineTheme = "nightfox"
 
     -- hightlight with bold font the current keyword under cursor
     vim.cmd("highlight LspReferenceText gui=bold")
@@ -69,6 +73,7 @@ local tokyo = {
     })
 
     vim.cmd("colorscheme tokyonight")
+    LualineTheme = "tokyonight"
 
     vim.cmd("highlight LspReferenceText gui=bold")
     vim.cmd("highlight LspReferenceRead gui=bold")

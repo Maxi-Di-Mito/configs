@@ -1,5 +1,6 @@
 return { -- Optional
   "williamboman/mason.nvim",
+  event = "VeryLazy",
   dependencies = {
     { "williamboman/mason-lspconfig.nvim" },
     { "jayp0521/mason-null-ls.nvim" },

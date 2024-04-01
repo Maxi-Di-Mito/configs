@@ -4,7 +4,7 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "catppuccin",
+        theme = LualineTheme,
         globalstatus = true,
         disabled_filetypes = { "packer", "NvimTree" },
         refresh = {
