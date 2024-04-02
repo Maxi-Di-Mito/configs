@@ -28,6 +28,10 @@ local catppuccin = {
     vim.cmd("highlight LspReferenceText gui=bold")
     vim.cmd("highlight LspReferenceRead gui=bold")
     vim.cmd("highlight LspReferenceWrite gui=bold")
+
+    vim.cmd("hi LspReferenceText cterm=bold gui=bold")
+    vim.cmd("hi LspReferenceRead cterm=bold gui=bold")
+    vim.cmd("hi LspReferenceWrite cterm=bold gui=bold")
   end,
 }
 

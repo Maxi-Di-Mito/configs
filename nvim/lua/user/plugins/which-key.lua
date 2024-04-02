@@ -201,16 +201,9 @@ return {
           end,
           "Virtual text on",
         },
-        e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
       },
       s = {
         name = "Search",
-        f = { "<cmd>lua require('fzf-lua').files()<cr>", "Find File" },
-        M = { "<cmd>lua require('fzf-lua').man_pages()<cr>", "Man Pages" },
-        r = { "<cmd>FzfLua oldfiles<cr>", "Open Recent File" },
-        R = { "<cmd>FzfLua registers<cr>", "Registers" },
-        t = { "<cmd>lua require('fzf-lua').live_grep()<cr>", "Text" },
-        s = { "<cmd>lua require('fzf-lua').blines()<cr>", "Text in Buffer" },
       },
       T = {
         name = "Treesitter",

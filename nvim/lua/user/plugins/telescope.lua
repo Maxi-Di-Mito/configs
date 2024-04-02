@@ -1,4 +1,5 @@
-return {
+---@diagnostic disable-next-line: unused-local
+local telescopeConfig = {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   dependencies = {
@@ -66,3 +67,4 @@ return {
     keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "File symbols" })
   end,
 }
+return {}
