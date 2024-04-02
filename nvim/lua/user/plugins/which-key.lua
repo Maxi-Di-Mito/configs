@@ -96,7 +96,6 @@ return {
       ["w"] = { "<cmd>w!<CR>", "Save" },
       ["q"] = { "<cmd>q<cr>", "Quit" },
       ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
-      ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
 
       -- ["f"] = {
       --   "<cmd>lua require('fzf-lua').files({cmd ='ag --hidden --ignore .git --path-to-ignore ~/configs/.ignore -g \"\"'})<cr>",
@@ -123,14 +122,6 @@ return {
         "<cmd>Neotree toggle<cr>",
         "File tree",
       },
-      p = {
-        name = "Packer",
-        c = { "<cmd>PackerCompile<cr>", "Compile" },
-        i = { "<cmd>PackerInstall<cr>", "Install" },
-        s = { "<cmd>PackerSync<cr>", "Sync" },
-        S = { "<cmd>PackerStatus<cr>", "Status" },
-        u = { "<cmd>PackerUpdate<cr>", "Update" },
-      },
       -- " Available Debug Adapters:
       -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
       -- " Adapter configuration and installation instructions:
@@ -140,27 +131,6 @@ return {
       -- " Debugging
       g = {
         name = "Git",
-        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-        u = {
-          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-          "Undo Stage Hunk",
-        },
-        -- o = { "<cmd>lua require('fzf-lua').git_status()<cr>", "Open changed file" },
-        b = { "<cmd>lua require('fzf-lua').git_branches()<cr>", "Checkout branch" },
-        -- c = { "<cmd>lua require('fzf-lua').git_bcommits()<cr>", "Checkout commit" },
-        C = {
-          "<cmd>lua require('fzf-lua').git_commits()<cr>",
-          "Checkout commit(workspace)",
-        },
-        d = {
-          "<cmd>Gitsigns diffthis HEAD<cr>",
-          "Git Diff",
-        },
       },
       l = {
         name = "LSP",
@@ -182,11 +152,6 @@ return {
         l = { vim.lsp.codelens.run, "CodeLens Action" },
         q = { vim.diagnostic.setloclist, "Quickfix" },
         r = { vim.lsp.buf.rename, "Rename" },
-        s = { "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", "Document Symbols" },
-        S = {
-          "<cmd>lua require('fzf-lua').lsp_workspace_symbols()<cr>",
-          "Workspace Symbols",
-        },
         v = {
           function()
             vim.diagnostic.show(nil, 0, nil, { virtual_text = false })
