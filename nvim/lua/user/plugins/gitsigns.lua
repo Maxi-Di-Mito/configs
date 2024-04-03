@@ -50,12 +50,12 @@ return {
         enable = false,
       },
     })
-    vim.keymap.set("n", "<leader>gj ", "<cmd>Gitsigns next_hunk<cr>", { desc = "Next Hunk" })
-    vim.keymap.set("n", "<leader>gk ", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Prev Hunk" })
-    vim.keymap.set("n", "<leader>gl ", "<cmd>Gitsigns blame_line<cr>", { desc = "Blame" })
-    vim.keymap.set("n", "<leader>gp ", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview Hunk" })
-    vim.keymap.set("n", "<leader>gr ", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset Hunk" })
-    vim.keymap.set("n", "<leader>gR ", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset Buffer" })
+    vim.keymap.set("n", "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", { desc = "Next Hunk" })
+    vim.keymap.set("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Prev Hunk" })
+    vim.keymap.set("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", { desc = "Blame" })
+    vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview Hunk" })
+    vim.keymap.set("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset Hunk" })
+    vim.keymap.set("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset Buffer" })
     vim.keymap.set("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", { desc = "Undo Stage Hunk" })
     vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", { desc = "Git Diff" })
   end,
