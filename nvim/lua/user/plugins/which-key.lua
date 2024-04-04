@@ -122,50 +122,11 @@ return {
         "<cmd>Neotree toggle<cr>",
         "File tree",
       },
-      -- " Available Debug Adapters:
-      -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
-      -- " Adapter configuration and installation instructions:
-      -- "   https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-      -- " Debug Adapter protocol:
-      -- "   https://microsoft.github.io/debug-adapter-protocol/
-      -- " Debugging
       g = {
         name = "Git",
       },
       l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = { "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", "Buffer Diagnostics" },
-        w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Diagnostics" },
-        f = { "<cmd>lua FormattingFunction(true)<cr>", "Format" },
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>Mason<cr>", "Mason Info" },
-        K = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
-        j = {
-          vim.diagnostic.goto_next,
-          "Next Diagnostic",
-        },
-        k = {
-          vim.diagnostic.goto_prev,
-          "Prev Diagnostic",
-        },
-        l = { vim.lsp.codelens.run, "CodeLens Action" },
-        q = { vim.diagnostic.setloclist, "Quickfix" },
-        r = { vim.lsp.buf.rename, "Rename" },
-        v = {
-          function()
-            vim.diagnostic.show(nil, 0, nil, { virtual_text = false })
-            print("virtualText off")
-          end,
-          "Virtual text off",
-        },
-        V = {
-          function()
-            vim.diagnostic.show(nil, 0, nil, { virtual_text = true })
-            print("virtualText on")
-          end,
-          "Virtual text on",
-        },
       },
       s = {
         name = "Search",

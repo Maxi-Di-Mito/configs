@@ -5,19 +5,11 @@ return {
   config = function()
     local utils = require("user.utils")
 
-    -- import lspconfig plugin safely
-    local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-    if not lspconfig_status then
-      return
-    end
+    local lspconfig = require("lspconfig")
+    local mason_lspconfig = require("mason-lspconfig")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    -- import cmp-nvim-lsp plugin safely
-    local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if not cmp_nvim_lsp_status then
-      return
-    end
-
-    local okNavic, navic = pcall(require, "nvim-navic")
+    local navic = require("nvim-navic")
 
     navic.setup({
       highlight = true,
@@ -28,10 +20,16 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     -- enable keybinds only for when lsp server available
-    local on_attach = function(client, bufnr)
-      if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec(
-          [[
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        local opts = { buffer = ev.buf, silent = true }
+
+        if client.server_capabilities.documentHighlightProvider then
+          vim.api.nvim_exec(
+            [[
     augroup lsp_document_highlight
       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
@@ -39,43 +37,49 @@ return {
     augroup END
 
   ]],
-          false
-        )
-      end
+            false
+          )
+        end
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        group = augroup,
-        callback = function()
-          FormattingFunction()
-        end,
-      })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = ev.buf,
+          group = augroup,
+          callback = function()
+            FormattingFunction()
+          end,
+        })
 
-      if client.server_capabilities.documentSymbolProvider and okNavic then
-        navic.attach(client, bufnr)
-      end
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, ev.buf)
+        end
+        opts.desc = "Buffer Diagnostics"
+        keymap.set("n", "<leader>ld", "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", opts)
 
-      -- keybind options
-      local opts = { noremap = true, silent = true, buffer = bufnr }
+        opts.desc = "Show documentation"
+        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+        --TODO CHECK K = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
 
-      -- set keybinds
-      -- keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-      -- keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
-      -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- see definition and make edits in window
-      -- keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- go to implementation
-      -- keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- go to implementation
-      -- keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
-      -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-      -- keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-      -- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-      -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-      -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-    end
+        opts.desc = "Code Actions"
+        keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+
+        opts.desc = "Format"
+        keymap.set("n", "<leader>lf", "<cmd>lua FormattingFunction(true)<cr>", opts)
+
+        opts.desc = "Info"
+        keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>")
+
+        opts.desc = "Next Diagnostic"
+        keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, opts)
+        opts.desc = "Prev Diagnostic"
+        keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, opts)
+
+        opts.desc = "Rename"
+        keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
+      end,
+    })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -85,129 +89,120 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    local simpleSetupServers = {
-      "cssls",
-      "bashls",
-      "dockerls",
-      "lemminx",
-      "svelte",
-      "taplo",
-      "vimls",
-      "yamlls",
-      "htmx",
-    }
-
-    for _, value in ipairs(simpleSetupServers) do
-      lspconfig[value].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-      })
-    end
-
-    -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = { -- custom settings for lua
-        Lua = {
-          runtime = { version = "LuaJIT" },
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            -- globals = { "vim" },
-          },
-          format = { enable = false },
-          workspace = {
-            checkThirdParty = false,
-            -- make language server aware of runtime files
-            library = {
-              "${3rd}/luv/library",
-              unpack(vim.api.nvim_get_runtime_file("", true)),
-            },
-          },
-        },
-      },
-    })
-
-    lspconfig["jsonls"].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = {
-        json = {
-          validate = { enable = true },
-          schemas = require("schemastore").json.schemas(),
-        },
-      },
-    })
-
     local root_pattern = require("lspconfig.util").root_pattern
-    lspconfig["eslint"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      root_dir = root_pattern(".git"),
-      codeActionOnSave = {
-        rules = { "!jsdoc/" },
-        mode = "all",
-      },
-      -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
-      settings = {
-        -- workingDirectory = { mode = "auto" },
-      },
-    })
 
-    lspconfig["gopls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
-      settings = {
-        gopls = {
-          -- see ftdetect/go.lua.
-          ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
-        },
-      },
-    })
-
-    lspconfig["volar"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      init_options = {
-        typescript = {
-          tsdk = utils.getTypescriptPath(),
-        },
-      },
-      settings = {
-        vue = {
-          format = {
-            template = {
-              initialIndent = true,
-            },
-            script = {
-              initialIndent = true,
-            },
-            style = {
-              initialIndent = true,
+    mason_lspconfig.setup_handlers({
+      function(serverName)
+        lspconfig[serverName].setup({
+          capabilities = capabilities,
+        })
+      end,
+      ["lua_ls"] = function()
+        lspconfig["lua_ls"].setup({
+          capabilities = capabilities,
+          settings = { -- custom settings for lua
+            Lua = {
+              runtime = { version = "LuaJIT" },
+              -- make the language server recognize "vim" global
+              diagnostics = {
+                -- globals = { "vim" },
+              },
+              format = { enable = false },
+              workspace = {
+                checkThirdParty = false,
+                -- make language server aware of runtime files
+                library = {
+                  "${3rd}/luv/library",
+                  unpack(vim.api.nvim_get_runtime_file("", true)),
+                },
+              },
             },
           },
-        },
-      },
-    })
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = {
-        diagnostics = {
-          ignoredCodes = { 7016, 80001, 6133, 80006 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param, 80006 can be an async function
-        },
-      },
-      root_dir = function(fname)
-        return lspconfig.util.root_pattern("tsconfig.json")(fname)
-          or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
+        })
       end,
-    })
-
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "gohtmltmpl" },
+      ["jsonls"] = function()
+        lspconfig["jsonls"].setup({
+          capabilities = capabilities,
+          settings = {
+            json = {
+              validate = { enable = true },
+              schemas = require("schemastore").json.schemas(),
+            },
+          },
+        })
+      end,
+      ["eslint"] = function()
+        lspconfig["eslint"].setup({
+          capabilities = capabilities,
+          root_dir = root_pattern(".git"),
+          codeActionOnSave = {
+            rules = { "!jsdoc/" },
+            mode = "all",
+          },
+          -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
+          settings = {
+            -- workingDirectory = { mode = "auto" },
+          },
+        })
+      end,
+      ["gopls"] = function()
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+          filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+          settings = {
+            gopls = {
+              -- see ftdetect/go.lua.
+              ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
+            },
+          },
+        })
+      end,
+      ["volar"] = function()
+        lspconfig["volar"].setup({
+          capabilities = capabilities,
+          init_options = {
+            typescript = {
+              tsdk = utils.getTypescriptPath(),
+            },
+          },
+          settings = {
+            vue = {
+              format = {
+                template = {
+                  initialIndent = true,
+                },
+                script = {
+                  initialIndent = true,
+                },
+                style = {
+                  initialIndent = true,
+                },
+              },
+            },
+          },
+        })
+      end,
+      ["tsserver"] = function()
+        lspconfig["tsserver"].setup({
+          capabilities = capabilities,
+          settings = {
+            diagnostics = {
+              ignoredCodes = { 7016, 80001, 6133, 80006 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param, 80006 can be an async function
+            },
+          },
+          root_dir = function(fname)
+            return lspconfig.util.root_pattern(".git")(fname)
+            -- return lspconfig.util.root_pattern("tsconfig.json")(fname)
+            --   or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
+          end,
+        })
+      end,
+      ["html"] = function()
+        lspconfig["html"].setup({
+          capabilities = capabilities,
+          filetypes = { "html", "gohtmltmpl" },
+        })
+      end,
     })
   end,
 }
