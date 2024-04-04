@@ -1,7 +1,11 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = "SmiteshP/nvim-navic",
+  dependencies = {
+    { "williamboman/mason-lspconfig.nvim" },
+    { "SmiteshP/nvim-navic" },
+    { "folke/neodev.nvim", opts = {}, event = "VeryLazy" },
+  },
   config = function()
     local utils = require("user.utils")
 
