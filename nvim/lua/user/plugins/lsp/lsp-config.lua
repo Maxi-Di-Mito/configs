@@ -161,6 +161,12 @@ return {
           },
         })
       end,
+      ["htmx"] = function()
+        lspconfig["htmx"].setup({
+          capabilities = capabilities,
+          filetypes = { "gotmpl", "gohtmltmpl", "gotexttmpl" },
+        })
+      end,
       ["volar"] = function()
         lspconfig["volar"].setup({
           capabilities = capabilities,
@@ -205,6 +211,12 @@ return {
         lspconfig["html"].setup({
           capabilities = capabilities,
           filetypes = { "html", "gohtmltmpl" },
+        })
+      end,
+      ["bashls"] = function()
+        lspconfig["bashls"].setup({
+          capabilities = capabilities,
+          filetypes = { "sh", "bash", "zsh" },
         })
       end,
     })

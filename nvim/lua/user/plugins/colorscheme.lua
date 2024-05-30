@@ -1,7 +1,21 @@
 ---@diagnostic disable: param-type-mismatch
 
-LualineTheme = "catppuccin"
+LualineTheme = "rose-pine"
 
+---@diagnostic disable-next-line: unused-local
+local rosepine = {
+  "rose-pine/neovim",
+  name = "rose-pine",
+  config = function()
+    require("rose-pine").setup({
+      -- variant = "moon",
+      dim_inactive_windows = true,
+    })
+    vim.cmd("colorscheme rose-pine")
+  end,
+}
+
+---@diagnostic disable-next-line: unused-local
 local catppuccin = {
   "catppuccin/nvim",
   name = "catppuccin",
@@ -84,4 +98,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return catppuccin
+return rosepine

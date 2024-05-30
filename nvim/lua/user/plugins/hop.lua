@@ -1,7 +1,7 @@
 return {
   "smoka7/hop.nvim",
   version = "*",
-  opts = {},
+  event = "VeryLazy",
   config = function()
     local hop = require("hop")
 
