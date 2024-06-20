@@ -8,7 +8,11 @@ return {
   },
   config = function()
     local fzf = require("fzf-lua")
-    fzf.setup({})
+    fzf.setup({
+      lsp = {
+        cwd_only = true,
+      },
+    })
     -- Fix to scroll on fzf popup
     vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-j> <Down>]])
     vim.cmd([[ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>]])
@@ -28,6 +32,6 @@ return {
     keymap.set("n", "<leader>ss", "<cmd>lua require('fzf-lua').blines()<cr>", { desc = "Text in Buffer" })
 
     keymap.set("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "File symbols" })
-    keymap.set("n", "<leader>lS", "<cmd>FzfLua lsp_workspace_symbols<cr>", { desc = "Document Symbols" })
+    keymap.set("n", "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", { desc = "Document Symbols" })
   end,
 }

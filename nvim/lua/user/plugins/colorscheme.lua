@@ -10,6 +10,9 @@ local rosepine = {
     require("rose-pine").setup({
       -- variant = "moon",
       dim_inactive_windows = true,
+      style = {
+        transparency = true,
+      },
     })
     vim.cmd("colorscheme rose-pine")
   end,
