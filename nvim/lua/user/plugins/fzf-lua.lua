@@ -22,6 +22,11 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>g", group = "Git" },
+    })
+
     keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>", { desc = "Find files" })
     keymap.set("n", "<leader>bf", "<cmd>FzfLua buffers<cr>", { desc = "Find current buffers" })
     keymap.set("n", "<leader>gC", "<cmd>FzfLua git_commits<cr>", { desc = "Checkout commit(workspace)" })

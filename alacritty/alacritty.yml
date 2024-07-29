@@ -58,7 +58,7 @@ font:
     style: Regular
 
   # Point size
-  size: 13.0
+  size: 14.0
   # family: "JetBrainsMono Nerd Font"
 
   # Offset is the extra space around each character. `offset.y` can be thought of

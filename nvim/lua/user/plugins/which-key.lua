@@ -102,28 +102,9 @@ return {
       --   "Find File",
       -- },
       ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-      b = {
-        name = "Buffers",
-        b = { "<cmd>b#<cr>", "Back" },
-        j = { "<cmd>BufferLinePick<cr>", "Jump" },
-        -- f = { "<cmd>lua require('fzf-lua').buffers()<cr>", "Find" },
-        -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
-        e = {
-          "<cmd>BufferLinePickClose<cr>",
-          "Pick which buffer to close",
-        },
-        h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-        l = {
-          "<cmd>BufferLineCloseRight<cr>",
-          "Close all to the right",
-        },
-      },
       e = {
         "<cmd>Neotree toggle<cr>",
         "File tree",
-      },
-      g = {
-        name = "Git",
       },
       l = {
         name = "LSP",
