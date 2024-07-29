@@ -24,6 +24,12 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     -- enable keybinds only for when lsp server available
+    --
+    local wk = require("which-key")
+
+    wk.add({
+      { "<leader>l", group = "LSP" },
+    })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
