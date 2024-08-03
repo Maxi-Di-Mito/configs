@@ -57,6 +57,14 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
+      -- tabline = {
+      --   lualine_y = {
+      --     "tabs",
+      --   },
+      --   lualine_z = {
+      --     "buffers",
+      --   },
+      -- },
     })
   end,
 }

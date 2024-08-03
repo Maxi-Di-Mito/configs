@@ -14,7 +14,15 @@ return {
 
     bufferline.setup({
       options = {
+        mode = "buffers",
         separator_style = "slant",
+        indicator = {
+          style = "underline",
+        },
+        diagnostics = "nvim_lsp",
+        -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        --   return "(" .. count .. ")"
+        -- end,
       },
       -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
       -- highlights = require("rose-pine.plugins.bufferline"),
