@@ -149,9 +149,13 @@ export BAT_THEME=tokyo-theme-moon
 
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_PREVIEW_ADVANCED=true
+
 #comands with fzf
 alias azf="~/configs/azf.sh"
 alias fp="~/configs/fp.sh"
 alias fvim="~/configs/fvim.sh"
 alias gvim="~/configs/gvim.sh"
 alias cls=clear
+alias fgit="~/configs/scripts/fgit.sh"
+alias pfzf="~/configs/scripts/betterFzfPreview.sh"

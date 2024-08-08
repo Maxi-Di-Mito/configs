@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use FZF to select files
-selected_files=$(git ls-files -co | fzf --multi --preview "bat --color=always {}")
+selected_files=$(git ls-files -co | fzf --multi --tmux 70% --preview "bat --color=always {}")
 
 # If no files were selected, exit
 if [[ -z "$selected_files" ]]; then
@@ -10,7 +10,7 @@ if [[ -z "$selected_files" ]]; then
 fi
 
 # Use FZF to select a Git command
-selected_command=$(echo -e "add\nrm\ncheckout\nreset\ndiff\n" | fzf +m --preview "echo {}")
+selected_command=$(echo -e "add\nrm\ncheckout\nreset\ndiff\n" | fzf +m --tmux 70% --preview "echo {}")
 
 # If no command was selected, exit
 if [[ -z "$selected_command" ]]; then
