@@ -12,6 +12,8 @@ fi
 # Use FZF to select a Git command
 selected_command=$(echo -e "add\nrm\ncheckout\nreset\ndiff\n" | fzf +m --tmux 70% --preview "echo {}")
 
+
+
 # If no command was selected, exit
 if [[ -z "$selected_command" ]]; then
     echo "No Git command selected."
