@@ -27,6 +27,18 @@ return {
       { "<leader>g", group = "Git" },
     })
 
+    wk.add({
+      { "<leader>s", group = "Search" },
+    })
+
+    wk.add({
+      { "g", group = "Go To's" },
+    })
+
+    keymap.set("n", "gd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", { desc = "Definition" })
+    keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { desc = "References" })
+    keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Line Diagnostics" })
+
     keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>", { desc = "Find files" })
     keymap.set("n", "<leader>bf", "<cmd>FzfLua buffers<cr>", { desc = "Find current buffers" })
     keymap.set("n", "<leader>gC", "<cmd>FzfLua git_commits<cr>", { desc = "Checkout commit(workspace)" })

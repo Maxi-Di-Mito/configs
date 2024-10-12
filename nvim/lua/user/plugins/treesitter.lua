@@ -25,6 +25,14 @@ return {
 
     vim.treesitter.language.register("html", "gohtmltmpl") --
 
+    local wk = require("which-key")
+
+    wk.add({
+      { "<leader>T", group = "Treesitter" },
+    })
+
+    vim.keymap.set("n", "<leader>Ti", ":TSConfigInfo<cr>", { desc = "Info" })
+
     require("treesitter-context").setup()
     require("ts_context_commentstring").setup()
   end,

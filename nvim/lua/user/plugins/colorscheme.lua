@@ -15,6 +15,8 @@ local rosepine = {
       },
     })
     vim.cmd("colorscheme rose-pine")
+    LualineTheme = "rose-pine"
+
     -- ColorMyPencils()
   end,
 }
@@ -107,4 +109,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return rosepine
+return catppuccin

@@ -8,4 +8,4 @@
 
 
 
-fzf --tmux 80% --preview "( [[ -d {} ]] && tree -C {} ) || ( chafa {} ) || bat {}"
+fzf --tmux 80% --preview "( [[ -d {} ]] && tree -C {} ) || ( chafa {} ) || bat --style=full --color=always {}"
