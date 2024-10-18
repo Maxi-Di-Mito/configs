@@ -50,5 +50,6 @@ return {
 
     keymap.set("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "File symbols" })
     keymap.set("n", "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", { desc = "Document Symbols" })
+    keymap.set("n", "<leader>lD", "<cmd>FzfLua lsp_workspace_diagnostics<cr>", { desc = "Workspace Diagnostics" })
   end,
 }
