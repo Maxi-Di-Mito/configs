@@ -8,13 +8,6 @@ return {
     end
 
     gitsigns.setup({
-      signs = {
-        add = { hl = "GitSignsAdd", text = "▎" },
-        change = { hl = "GitSignsChange", text = "▎" },
-        delete = { hl = "GitSignsDelete", text = "契" },
-        topdelete = { hl = "GitSignsDelete", text = "契" },
-        changedelete = { hl = "GitSignsChange", text = "▎" },
-      },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
       numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
       linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
