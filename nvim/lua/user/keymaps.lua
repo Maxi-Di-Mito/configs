@@ -50,6 +50,8 @@ map("v", "<A-j>", ":m .+1<CR>==")
 map("v", "<A-k>", ":m .-2<CR>==")
 map("v", "p", '"_dP')
 
+map("v", "/", "gc", { desc = "Comment selection" })
+
 -- Visual Block --
 -- Move text up and down
 map("x", "J", ":move '>+1<CR>gv-gv")

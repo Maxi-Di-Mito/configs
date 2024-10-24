@@ -29,7 +29,6 @@ local options = {
 require("lazy").setup({
   { import = "user.plugins" },
   { import = "user.plugins.lsp" },
-  "numToStr/Comment.nvim",
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     event = { "BufReadPre", "BufNewFile" },
@@ -40,17 +39,6 @@ require("lazy").setup({
       require("nvim-web-devicons").setup()
     end,
   },
-  -- Themes
-  --[[ "folke/tokyonight.nvim", ]]
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("user.plugins.colorscheme")
-  --   end,
-  -- },
-  -- LSP Support
-
   -- Autocompletion
   {
     "windwp/nvim-autopairs",

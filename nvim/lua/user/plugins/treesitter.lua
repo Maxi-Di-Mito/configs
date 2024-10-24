@@ -34,6 +34,8 @@ return {
     vim.keymap.set("n", "<leader>Ti", ":TSConfigInfo<cr>", { desc = "Info" })
 
     require("treesitter-context").setup()
-    require("ts_context_commentstring").setup()
+    require("ts_context_commentstring").setup({
+      enable_autocmd = false,
+    })
   end,
 }
