@@ -1,6 +1,6 @@
 ---@diagnostic disable: param-type-mismatch
 
-LualineTheme = "rose-pine"
+LualineTheme = "tokyonight"
 
 ---@diagnostic disable-next-line: unused-local
 local rosepine = {
@@ -109,4 +109,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return catppuccin
+return tokyo
