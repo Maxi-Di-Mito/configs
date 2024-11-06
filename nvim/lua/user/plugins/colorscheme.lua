@@ -1,6 +1,6 @@
 ---@diagnostic disable: param-type-mismatch
 
-LualineTheme = "tokyonight"
+LualineTheme = "rose-pine"
 
 ---@diagnostic disable-next-line: unused-local
 local rosepine = {
@@ -33,8 +33,11 @@ local catppuccin = {
   priority = 1000,
   config = function()
     require("catppuccin").setup({
+      transparent_background = true,
       dim_inactive = {
-        enabled = true,
+        enabled = false,
+        -- shade = "grey",
+        percentaje = 0.2,
       },
       integrations = {
         neotree = true,
@@ -97,8 +100,13 @@ local nightfox = {
 local tokyo = {
   "folke/tokyonight.nvim",
   config = function()
+    ---@class tokyonight.Config
+    ---@diagnostic disable-next-line: missing-fields
     require("tokyonight").setup({
       dim_inactive = true,
+      styles = {
+        keywords = { italic = true },
+      },
     })
 
     vim.cmd("colorscheme tokyonight")

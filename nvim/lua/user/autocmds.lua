@@ -26,3 +26,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt_local.filetype = "gotexttmpl"
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  callback = function()
+    if require("lazy.core.config").plugins["neominimap.nvim"]._.loaded ~= nil then
+      vim.cmd("Neominimap on")
+    else
+    end
+  end,
+})

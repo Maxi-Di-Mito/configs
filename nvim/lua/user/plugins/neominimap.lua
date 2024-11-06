@@ -19,7 +19,7 @@ return {
 
     local neominimap = require("neominimap")
 
-    neominimap.setup()
+    -- neominimap.setup()
 
     local wk = require("which-key")
 
