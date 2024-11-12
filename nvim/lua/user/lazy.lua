@@ -16,7 +16,7 @@ local options = {
   install = {
     -- colorscheme = { "nightfly" },
   },
-  colorscheme = "rose-pine",
+  colorscheme = "tokyonight",
   checker = {
     enabled = true,
     notify = false,

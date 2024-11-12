@@ -117,4 +117,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return tokyo
+return rosepine

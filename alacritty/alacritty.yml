@@ -1,6 +1,6 @@
 #
 import:
-  - ./Tokyo-night.yml
+  - ./rose-pine.yml
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 env:
