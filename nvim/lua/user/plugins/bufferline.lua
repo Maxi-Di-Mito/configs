@@ -12,14 +12,23 @@ return {
       return
     end
 
+    ---@class bufferline.UserConfig
     bufferline.setup({
       options = {
         mode = "buffers",
-        separator_style = "slant",
+        separator_style = "thick",
         indicator = {
           style = "underline",
         },
         diagnostics = "nvim_lsp",
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "File Explorer",
+            text_align = "left",
+            separator = true,
+          },
+        },
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
         --   return "(" .. count .. ")"
         -- end,

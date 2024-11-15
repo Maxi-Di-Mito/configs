@@ -6,6 +6,7 @@ opt.relativenumber = true
 opt.number = true
 opt.updatetime = 100 -- ms to wait for trigger an event
 vim.g.cursorhold_updatetime = 100
+opt.cmdheight = 0
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)

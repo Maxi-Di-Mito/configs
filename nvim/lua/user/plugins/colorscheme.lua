@@ -103,13 +103,18 @@ local tokyo = {
     ---@class tokyonight.Config
     ---@diagnostic disable-next-line: missing-fields
     require("tokyonight").setup({
+      style = "moon",
       dim_inactive = true,
       styles = {
         keywords = { italic = true },
+        sidebars = "transparent",
+        floats = "transparent",
       },
+      transparent = true,
+      lualine_bold = true,
     })
 
-    vim.cmd("colorscheme tokyonight")
+    vim.cmd("colorscheme tokyonight-moon")
     LualineTheme = "tokyonight"
 
     vim.cmd("highlight LspReferenceText gui=bold")
@@ -117,4 +122,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return rosepine
+return tokyo
