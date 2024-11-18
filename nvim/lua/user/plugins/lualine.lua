@@ -33,7 +33,7 @@ return {
       --[[ }, ]]
       winbar = {
         lualine_b = {
-          { "filename", path = 1 },
+          { "filename", path = 4 },
         },
         lualine_c = {
           "navic",
@@ -42,7 +42,7 @@ return {
         },
       },
       inactive_winbar = {
-        lualine_c = { { "filename", path = 1 } },
+        lualine_c = { { "filename", path = 4 } },
       },
       inactive_sections = {
         lualine_a = {},

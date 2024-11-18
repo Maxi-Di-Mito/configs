@@ -45,18 +45,28 @@ return {
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         local opts = { buffer = ev.buf, silent = true }
 
-        if client.server_capabilities.documentHighlightProvider then
-          vim.api.nvim_exec(
-            [[
-    augroup lsp_document_highlight
-      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-
-  ]],
-            false
-          )
+        if client and client.server_capabilities.documentHighlightProvider then
+          vim.api.nvim_create_autocmd("CursorHold", {
+            buffer = ev.buf,
+            group = augroup,
+            callback = function()
+              vim.lsp.buf.document_highlight()
+            end,
+          })
+          vim.api.nvim_create_autocmd("CursorHoldI", {
+            buffer = ev.buf,
+            group = augroup,
+            callback = function()
+              vim.lsp.buf.document_highlight()
+            end,
+          })
+          vim.api.nvim_create_autocmd("CursorMoved", {
+            buffer = ev.buf,
+            group = augroup,
+            callback = function()
+              vim.lsp.buf.clear_references()
+            end,
+          })
         end
 
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -67,7 +77,7 @@ return {
           end,
         })
 
-        if client.server_capabilities.documentSymbolProvider then
+        if client and client.server_capabilities.documentSymbolProvider then
           navic.attach(client, ev.buf)
         end
         opts.desc = "Buffer Diagnostics"
@@ -206,8 +216,8 @@ return {
           },
         })
       end,
-      ["tsserver"] = function()
-        lspconfig["tsserver"].setup({
+      ["ts_ls"] = function()
+        lspconfig["ts_ls"].setup({
           capabilities = capabilities,
           settings = {
             diagnostics = {
