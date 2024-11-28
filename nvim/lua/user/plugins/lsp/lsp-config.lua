@@ -216,6 +216,17 @@ return {
           },
         })
       end,
+      ["vuels"] = function()
+        lspconfig["vuels"].setup({
+          settings = {
+            vetur = {
+              format = {
+                enable = false,
+              },
+            },
+          },
+        })
+      end,
       ["ts_ls"] = function()
         lspconfig["ts_ls"].setup({
           capabilities = capabilities,

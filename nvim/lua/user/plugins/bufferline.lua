@@ -12,11 +12,11 @@ return {
       return
     end
 
-    ---@class bufferline.UserConfig
+    ---@type bufferline.UserConfig
     bufferline.setup({
       options = {
         mode = "buffers",
-        separator_style = "thick",
+        separator_style = "thin",
         indicator = {
           style = "underline",
         },
