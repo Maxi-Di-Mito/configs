@@ -1,6 +1,23 @@
 ---@diagnostic disable: param-type-mismatch
 
-LualineTheme = "rose-pine"
+LualineTheme = "catppuccin"
+
+---@diagnostic disable-next-line: unused-local
+local everforest = {
+  "sainnhe/everforest",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    LualineTheme = "everforest"
+    -- Optionally configure and load the colorscheme
+    -- directly inside the plugin declaration.
+    vim.g.everforest_enable_italic = true
+    vim.g.everforest_background = "hard"
+    vim.g.everforest_better_performance = 1
+    vim.g.everforest_transparent_background = 2
+    vim.cmd.colorscheme("everforest")
+  end,
+}
 
 ---@diagnostic disable-next-line: unused-local
 local rosepine = {
@@ -14,6 +31,7 @@ local rosepine = {
         transparency = true,
       },
     })
+
     vim.cmd("colorscheme rose-pine")
     LualineTheme = "rose-pine"
 
@@ -122,4 +140,4 @@ local tokyo = {
     vim.cmd("highlight LspReferenceWrite gui=bold")
   end,
 }
-return tokyo
+return everforest
