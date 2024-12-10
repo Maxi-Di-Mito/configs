@@ -5,6 +5,8 @@ return {
     require("lualine").setup({
       options = {
         theme = LualineTheme,
+        component_separators = "",
+        section_separators = "",
         globalstatus = true,
         disabled_filetypes = { "packer", "NvimTree" },
         refresh = {
