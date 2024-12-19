@@ -36,6 +36,7 @@ return {
     })
 
     keymap.set("n", "gd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", { desc = "Definition" })
+    keymap.set("n", "gD", "<cmd>lua require('fzf-lua').lsp_typedefs()<CR>", { desc = "Definition" })
     keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { desc = "References" })
     keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Line Diagnostics" })
 
@@ -49,7 +50,12 @@ return {
     keymap.set("n", "<leader>ss", "<cmd>lua require('fzf-lua').blines()<cr>", { desc = "Text in Buffer" })
 
     keymap.set("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "File symbols" })
-    keymap.set("n", "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", { desc = "Document Symbols" })
+    keymap.set(
+      "n",
+      "<leader>lS",
+      "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols({cwd_only=true})<cr>",
+      { desc = "Document Symbols" }
+    )
     keymap.set("n", "<leader>lD", "<cmd>FzfLua lsp_workspace_diagnostics<cr>", { desc = "Workspace Diagnostics" })
   end,
 }

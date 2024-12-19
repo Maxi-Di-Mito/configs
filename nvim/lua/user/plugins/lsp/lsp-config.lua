@@ -4,14 +4,14 @@ return {
   dependencies = {
     { "williamboman/mason-lspconfig.nvim" },
     { "SmiteshP/nvim-navic" },
-    { "folke/neodev.nvim", opts = {}, event = "VeryLazy" },
+    -- { "folke/neodev.nvim", opts = {}, event = "VeryLazy" },
   },
   config = function()
     local utils = require("user.utils")
 
     local lspconfig = require("lspconfig")
     local mason_lspconfig = require("mason-lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local navic = require("nvim-navic")
 
@@ -107,7 +107,8 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)

@@ -12,7 +12,7 @@ return {
       return
     end
 
-    ---@type bufferline.UserConfig
+    --- @type bufferline.UserConfig
     bufferline.setup({
       options = {
         mode = "buffers",
@@ -49,6 +49,5 @@ return {
     keymap.set("n", "<leader>bl", "<cmd>BufferLineCloseRight<cr>", { desc = "Close all to the right" })
     keymap.set("n", "<leader>bh", "<cmd>BufferLineCloseLeft<cr>", { desc = "Close all to the left" })
     keymap.set("n", "<leader>be", "<cmd>BufferLinePickClose<cr>", { desc = "Pick which buffer to close" })
-    keymap.set("n", "<leader>bf", "<cmd>lua require('fzf-lua').buffers()<cr>", { desc = "Find" })
   end,
 }
