@@ -2,4 +2,5 @@
 .vim/.netrwhist
 nvim/plugin/**
 lvim/plugin/**
+**/files/*.txt
 
