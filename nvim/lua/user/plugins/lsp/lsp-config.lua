@@ -11,7 +11,6 @@ return {
 
     local lspconfig = require("lspconfig")
     local mason_lspconfig = require("mason-lspconfig")
-    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local navic = require("nvim-navic")
 
@@ -107,8 +106,9 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    -- local capabilities = cmp_nvim_lsp.default_capabilities()
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -186,10 +186,25 @@ return {
           },
         })
       end,
+      ["html"] = function()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        lspconfig["html"].setup({
+          capabilities = capabilities,
+          init_options = {
+            configurationSection = { "html", "css", "javascript" },
+            embeddedLanguages = {
+              css = true,
+              javascript = true,
+            },
+            provideFormatter = true,
+          },
+          filetypes = { "html", "gohtmltmpl" },
+        })
+      end,
       ["htmx"] = function()
         lspconfig["htmx"].setup({
           capabilities = capabilities,
-          filetypes = { "gotmpl", "gohtmltmpl", "gotexttmpl" },
+          filetypes = { "html", "gotmpl", "gohtmltmpl", "gotexttmpl" },
         })
       end,
       ["volar"] = function()
@@ -241,12 +256,6 @@ return {
             -- return lspconfig.util.root_pattern("tsconfig.json")(fname)
             --   or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
           end,
-        })
-      end,
-      ["html"] = function()
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "gohtmltmpl" },
         })
       end,
       ["bashls"] = function()
