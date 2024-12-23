@@ -9,9 +9,10 @@ local function extendGroup(name, styles)
 end
 
 local function setReferencesStyles()
-  extendGroup("LspReferenceRead", { bold = true, underline = true })
-  extendGroup("LspReferenceWrite", { bold = true, underline = true })
-  extendGroup("LspReferenceText", { bold = true, underline = true })
+  underline = vim.env.TERMUX_VERSION == nil
+  extendGroup("LspReferenceRead", { bold = true, underline = underline })
+  extendGroup("LspReferenceWrite", { bold = true, underline = underline })
+  extendGroup("LspReferenceText", { bold = true, underline = underline })
   extendGroup("Keyword", { italic = true })
 end
 
