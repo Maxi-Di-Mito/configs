@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ]
-  then
-    parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-else
-parent_path=$1
-fi
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 console=$(ls -a "$parent_path/files/" | cat | fzf --tmux 70%)
 selected=$(cat "$parent_path/files/$console" | fzf --tmux 70%)
@@ -16,8 +11,18 @@ size=$(echo $selected | cut -f3 -d=)
 
 echo "$name : SIZE: $size"
 
-read -r -p "Download? [y/N] " response
+if [ $# -eq 0 ]                                 
+  then                                          
+    downloadPath="."
+  else                                            
+    downloadPath=$1                                  
+fi                                              
+
+
+read -r -p "Download to $downloadPath ? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  curl -o "$name" "$url"
+  curl -o "$downloadPath/$name" "$url"
 fi
 
+echo "\nFinished\n"
+read -r cosa
