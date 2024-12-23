@@ -17,8 +17,7 @@ size=$(echo $selected | cut -f3 -d=)
 echo "$name : SIZE: $size"
 
 read -r -p "Download? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
   curl -o "$name" "$url"
 fi
 
