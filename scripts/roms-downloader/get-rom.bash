@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script takes an optional param to define the download directory.
 # For the data files, it takes the scripts location from BASH_SOURCE and uses that.
 
@@ -21,7 +20,6 @@ if [ $# -eq 0 ]
   else                                            
     downloadPath=$1                                  
 fi                                              
-
 
 read -r -p "Download to $downloadPath ? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

@@ -160,3 +160,4 @@ alias gvim="~/configs/gvim.sh"
 alias cls=clear
 alias fgit="~/configs/scripts/fgit.sh"
 alias pfzf="~/configs/scripts/betterFzfPreview.sh"
+alias romd="bash ~/configs/scripts/roms-downloader/get-rom.bash"
