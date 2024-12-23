@@ -15,6 +15,10 @@ url="${url%' *Size'}"
 size=$(echo $selected | cut -f3 -d=)
 
 echo "$name : SIZE: $size"
-read -p "Download? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
-curl -o "$name" "$url"
+read -r -p "Download? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+  curl -o "$name" "$url"
+fi
+
