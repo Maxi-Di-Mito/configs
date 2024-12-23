@@ -1,3 +1,4 @@
+local utils = require("user.utils")
 function ColorMyPencils()
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -9,7 +10,7 @@ local function extendGroup(name, styles)
 end
 
 local function setReferencesStyles()
-  underline = vim.env.TERMUX_VERSION == nil
+  local underline = !utils.isTermux()
   extendGroup("LspReferenceRead", { bold = true, underline = underline })
   extendGroup("LspReferenceWrite", { bold = true, underline = underline })
   extendGroup("LspReferenceText", { bold = true, underline = underline })

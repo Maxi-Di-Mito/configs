@@ -46,7 +46,12 @@ local function mysplit(inputstr, sep)
   return t
 end
 
+local function isTermux()
+  return vim.env.TERMUX_VERSION ~= nil
+end
+
 return {
+  isTermux = isTermux,
   capture = capture,
   dump = dump,
   getTypescriptPath = getTypescriptPath,

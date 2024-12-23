@@ -1,3 +1,4 @@
+local utils = require("user.utils")
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
@@ -18,7 +19,7 @@ return {
         mode = "buffers",
         separator_style = "thin",
         indicator = {
-          style = "underline",
+          style = utils.isTermux() and "underline" or "icon",
         },
         diagnostics = "nvim_lsp",
         offsets = {
