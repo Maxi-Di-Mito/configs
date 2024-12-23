@@ -10,7 +10,7 @@ local function extendGroup(name, styles)
 end
 
 local function setReferencesStyles()
-  local underline = !utils.isTermux()
+  local underline = not utils.isTermux()
   extendGroup("LspReferenceRead", { bold = true, underline = underline })
   extendGroup("LspReferenceWrite", { bold = true, underline = underline })
   extendGroup("LspReferenceText", { bold = true, underline = underline })
