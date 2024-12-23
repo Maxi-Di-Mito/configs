@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# This script takes an optional param to define the download directory.
+# For the data files, it takes the scripts location from BASH_SOURCE and uses that.
+
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 console=$(ls -a "$parent_path/files/" | cat | fzf --tmux 70%)
@@ -24,5 +28,5 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
   curl -o "$downloadPath/$name" "$url"
 fi
 
-echo "\nFinished\n"
+echo $'\nFinished\n'
 read -r cosa
