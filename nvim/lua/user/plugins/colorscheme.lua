@@ -18,7 +18,7 @@ local function setReferencesStyles()
 end
 
 -- set theme for lualine
-LualineTheme = "nightfox"
+LualineTheme = "catppuccin"
 return {
   {
     "sainnhe/everforest",
@@ -61,7 +61,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    enabled = false,
+    enabled = true,
     priority = 1000,
     config = function()
       require("catppuccin").setup({
@@ -77,6 +77,10 @@ return {
             enabled = true,
           },
         },
+        styles = {
+          comments = { "italic" },
+          keywords = { "italic" },
+        },
       })
 
       local okf = vim.cmd("colorscheme catppuccin-mocha")
@@ -88,12 +92,14 @@ return {
       vim.cmd("hi LspReferenceText cterm=bold gui=bold")
       vim.cmd("hi LspReferenceRead cterm=bold gui=bold")
       vim.cmd("hi LspReferenceWrite cterm=bold gui=bold")
+      setReferencesStyles()
     end,
   },
 
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
+    enabled = false,
     config = function()
       local fox = require("nightfox")
       -- local grub = require("gruvbox")

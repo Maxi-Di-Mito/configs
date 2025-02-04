@@ -1,0 +1,16 @@
+curl 'https://download2.vimm.net/?mediaId=58710' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
+  -H 'Accept-Language: es-AR,es;q=0.9,en-US;q=0.8,en;q=0.7,es-419;q=0.6' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: counted=1; usprivacy=1N--; _ga=GA1.1.1788333087.1737817244; _sharedID=793fb11d-ff31-4590-b55f-9a522d202fe4; _sharedid=ab0b14c6-7d2e-423c-9737-577dfc046dc8; __gads=ID=e4803d7ef0ad6460:T=1737817280:RT=1737853952:S=ALNI_Mbhm4G7Yh6G2hsDguhEULcvlUFqPg; __gpi=UID=00000fd72746fc54:T=1737817280:RT=1737853952:S=ALNI_MbiRVVWJkyE95kFUarob9tha4ofEg; __eoi=ID=23160d8815158de9:T=1737817280:RT=1737853952:S=AA-AfjZZknF3Gkv3xwXsu9nccWtD; _sharedid_cst=TyylLI8srA%3D%3D; _sharedID_cst=kSylLAssaw%3D%3D; cto_bundle=JGlRtV9FeHFHN3dhR05uOXM2VnpVSk1ONnlPU2wzS1JxTkRObm8zTlhxWTZ2RWVrcUZ5UTlOdjl0dW9yU0VGUEJUdzBUYyUyRjQ4UzJtN1czeVJqb2xraGpUdVk3OVFjZUdGaU9Cck9LODh0M2hBZk5oNFBRbEkyN3dQJTJCUnUlMkZJb0d3S1RXdjY1NWFlQnF0OEFIWDlHcXJtYm80VUZlcTlIJTJGWDc5aEZHNElXZGE4JTJGZmUzeFpabE4lMkJMcXBqeUI0JTJCbkZaMHRLSkx4Nno4WnNqaDNWNm1GZVFmU3dYN1VGVkwxQUZHaUU0dDRtSUNVciUyRktIY01HN3Q3Q3lDRUpRVHRVYUtuakQyZ3JuakM5TFc2dkhNUVFqakl0V2dWWGw2SDEyb25JJTJGaU8lMkJVcVVheldUY3JHZG5NZ0xmOWMzczVTUUd5bGRPR3c2; cto_bidid=EXb6719nbVZBand1VEoyQzlHVTh4Z1dZJTJGZjFZJTJCcGtXaE1STWpvcllyUmthU2xlNk9rTCUyQmtVR3U4a04lMkZBMzRBUHhjenVUJTJCOUpuJTJGWlFxZURZYkdObFV0d3FxM2h5UVg0REFCVFdxbkFjODYxTUE4U2tBMyUyQmhPWjM2Rk5IVUdOZ0EwajhraUhLTGxoZ1dqSDFERnh2b3pwamVuQSUzRCUzRA; _ga_4BESX0QC2N=GS1.1.1737852484.2.1.1737854148.0.0.0' \
+  -H 'Referer: https://vimm.net/vault/63650' \
+  -H 'Sec-Fetch-Dest: document' \
+  -H 'Sec-Fetch-Mode: navigate' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'Sec-Fetch-User: ?1' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -o "file.wbfs"
