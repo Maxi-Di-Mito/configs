@@ -170,6 +170,7 @@ return {
           },
           -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
           settings = {
+            useFlatConfig = false,
             -- workingDirectory = { mode = "auto" },
           },
         })
