@@ -150,6 +150,10 @@ run = "layout tiling"
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace Q"
 
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = "layout tiling"
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
