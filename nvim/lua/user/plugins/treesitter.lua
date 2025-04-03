@@ -9,13 +9,14 @@ return {
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
-      ensure_installed = { "lua", "vim", "vimdoc", "query", "typescript", "javascript", "html" },
+      ensure_installed = { "lua", "vim", "vimdoc", "query", "typescript", "javascript", "html", "vue" },
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true, disable = { "yaml" } },
       autopairs = {
         enable = true,
       },
+      auto_install = true,
       -- disable treesitter on BIG files
       ---@diagnostic disable-next-line: unused-local
       disable = function(lang, bufnr)

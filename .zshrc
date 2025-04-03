@@ -102,22 +102,26 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# PATH="${HOME}/Library/Python/3.8/bin:${PATH}"
+# export PATH=$PATH:/Users/maximilianodimito/Library/Python/3.9/bin
 
-#Madison-Reed ENVS
-export NODE_ENV=local
-export CMS_ENV=dev
-export NODE_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/mr_modules
-export NODE_MODULE_BIN_PATH=/Users/maximiliano.dimito/Documents/Madison-Reed/mr/node_modules/db-migrate/bin
-export PATH=$PATH:$NODE_MODULE_BIN_PATH
-export PATH=$PATH:/Users/maximiliano.dimito/.local/bin
-export PATH=${PATH}:/usr/local/Cellar/graphicsmagick/1.3.40_1/bin
-# React-native
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+if [[ -z $TMUX ]]; then
+  #Madison-Reed ENVS
+  export NODE_ENV=local
+  export CMS_ENV=dev
+  export NODE_PATH=/Users/maximilianodimito/Documents/mr/mr_modules
+  export NODE_MODULE_BIN_PATH=/Users/maximilianodimito/Documents/mr/node_modules/db-migrate/bin
+
+  export PATH=$PATH:$NODE_MODULE_BIN_PATH
+  export PATH=$PATH:$NODE_PATH
+  export PATH=$PATH:/Users/maximilianodimito/.local/bin
+  export PATH=$PATH:/usr/local/Cellar/graphicsmagick/1.3.40_1/bin
+  # React-native
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export PATH=$PATH:$ANDROID_HOME/emulator
+  export PATH=$PATH:$ANDROID_HOME/tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -161,3 +165,5 @@ alias cls=clear
 alias fgit="~/configs/scripts/fgit.sh"
 alias pfzf="~/configs/scripts/betterFzfPreview.sh"
 alias romd="bash ~/configs/scripts/roms-downloader/get-rom.bash"
+# export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH
+# source $(brew --prefix nvm)/nvm.sh
