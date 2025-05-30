@@ -37,11 +37,6 @@ return {
         lualine_b = {
           { "filename", path = 4 },
         },
-        lualine_c = {
-          "navic",
-          color_correction = nil,
-          navic_opts = nil,
-        },
       },
       inactive_winbar = {
         lualine_c = { { "filename", path = 4 } },

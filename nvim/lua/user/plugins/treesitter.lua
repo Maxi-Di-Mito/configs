@@ -3,6 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-context",
+    "neovim/nvim-lspconfig"
   },
   build = ":TSUpdate",
   config = function()

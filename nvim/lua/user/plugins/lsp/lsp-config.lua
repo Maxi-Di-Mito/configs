@@ -2,21 +2,14 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    { "williamboman/mason-lspconfig.nvim" },
-    { "SmiteshP/nvim-navic" },
-    -- { "folke/neodev.nvim", opts = {}, event = "VeryLazy" },
+    -- { "williamboman/mason-lspconfig.nvim" },
+    { "nvimtools/none-ls.nvim" },
   },
   config = function()
     local utils = require("user.utils")
 
     local lspconfig = require("lspconfig")
-    local mason_lspconfig = require("mason-lspconfig")
-
-    local navic = require("nvim-navic")
-
-    navic.setup({
-      highlight = true,
-    })
+    -- local mason_lspconfig = require("mason-lspconfig")
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -76,9 +69,6 @@ return {
           end,
         })
 
-        if client and client.server_capabilities.documentSymbolProvider then
-          navic.attach(client, ev.buf)
-        end
         opts.desc = "Buffer Diagnostics"
         keymap.set("n", "<leader>ld", "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", opts)
 
@@ -120,151 +110,155 @@ return {
 
     local root_pattern = require("lspconfig.util").root_pattern
 
-    mason_lspconfig.setup_handlers({
-      function(serverName)
-        lspconfig[serverName].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["lua_ls"] = function()
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = { -- custom settings for lua
-            Lua = {
-              runtime = { version = "LuaJIT" },
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                -- globals = { "vim" },
-              },
-              format = { enable = false },
-              workspace = {
-                checkThirdParty = false,
-                -- make language server aware of runtime files
-                library = {
-                  "${3rd}/luv/library",
-                  unpack(vim.api.nvim_get_runtime_file("", true)),
-                },
-              },
-            },
-          },
-        })
-      end,
-      ["jsonls"] = function()
-        lspconfig["jsonls"].setup({
-          capabilities = capabilities,
-          settings = {
-            json = {
-              validate = { enable = true },
-              schemas = require("schemastore").json.schemas(),
-            },
-          },
-        })
-      end,
-      ["eslint"] = function()
-        lspconfig["eslint"].setup({
-          capabilities = capabilities,
-          root_dir = root_pattern(".git"),
-          codeActionOnSave = {
-            rules = { "!jsdoc/" },
-            mode = "all",
-          },
-          -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
-          settings = {
-            useFlatConfig = false,
-            -- workingDirectory = { mode = "auto" },
-          },
-        })
-      end,
-      ["gopls"] = function()
-        lspconfig["gopls"].setup({
-          capabilities = capabilities,
-          filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
-          settings = {
-            gopls = {
-              -- see ftdetect/go.lua.
-              ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
-            },
-          },
-        })
-      end,
-      ["html"] = function()
-        capabilities.textDocument.completion.completionItem.snippetSupport = true
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-          init_options = {
-            configurationSection = { "html", "css", "javascript" },
-            embeddedLanguages = {
-              css = true,
-              javascript = true,
-            },
-            provideFormatter = true,
-          },
-          filetypes = { "html", "gohtmltmpl" },
-        })
-      end,
-      ["htmx"] = function()
-        lspconfig["htmx"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "gotmpl", "gohtmltmpl", "gotexttmpl" },
-        })
-      end,
-      ["volar"] = function()
-        lspconfig["volar"].setup({
-          capabilities = capabilities,
-          init_options = {
-            typescript = {
-              tsdk = utils.getTypescriptPath(),
-            },
-          },
-          settings = {
-            vue = {
-              format = {
-                template = {
-                  initialIndent = true,
-                },
-                script = {
-                  initialIndent = true,
-                },
-                style = {
-                  initialIndent = true,
-                },
-              },
-            },
-          },
-        })
-      end,
-      ["vuels"] = function()
-        lspconfig["vuels"].setup({
-          settings = {
-            vetur = {
-              format = {
-                enable = false,
-              },
-            },
-          },
-        })
-      end,
-      ["ts_ls"] = function()
-        lspconfig["ts_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            diagnostics = {
-              ignoredCodes = { 7016, 80001, 6133, 80006 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param, 80006 can be an async function
-            },
-          },
-          root_dir = function(fname)
-            return lspconfig.util.root_pattern(".git")(fname)
-            -- return lspconfig.util.root_pattern("tsconfig.json")(fname)
-            --   or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
-          end,
-        })
-      end,
-      ["bashls"] = function()
-        lspconfig["bashls"].setup({
-          capabilities = capabilities,
-          filetypes = { "sh", "bash", "zsh" },
-        })
-      end,
+    vim.lsp.config("*", {
+      capabilities = capabilities,
     })
+
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      settings = { -- custom settings for lua
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            -- globals = { "vim" },
+          },
+          format = { enable = false },
+          workspace = {
+            checkThirdParty = false,
+            -- make language server aware of runtime files
+            library = {
+              "${3rd}/luv/library",
+              unpack(vim.api.nvim_get_runtime_file("", true)),
+            },
+          },
+        },
+      },
+    })
+    vim.lsp.config("jsonls", {
+      capabilities = capabilities,
+      settings = {
+        json = {
+          validate = { enable = true },
+          schemas = require("schemastore").json.schemas(),
+        },
+      },
+    })
+    vim.lsp.config("eslint", {
+      capabilities = capabilities,
+      root_dir = root_pattern(".git"),
+      codeActionOnSave = {
+        rules = { "!jsdoc/" },
+        mode = "all",
+      },
+      -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
+      settings = {
+        useFlatConfig = false,
+        -- workingDirectory = { mode = "auto" },
+      },
+    })
+    vim.lsp.config("gopls", {
+      capabilities = capabilities,
+      filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+      settings = {
+        gopls = {
+          -- see ftdetect/go.lua.
+          ["build.templateExtensions"] = { "gohtml", "html", "gotmpl", "tmpl" },
+        },
+      },
+    })
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    vim.lsp.config("html", {
+      capabilities = capabilities,
+      init_options = {
+        configurationSection = { "html", "css", "javascript" },
+        embeddedLanguages = {
+          css = true,
+          javascript = true,
+        },
+        provideFormatter = true,
+      },
+      filetypes = { "html", "gohtmltmpl" },
+    })
+    vim.lsp.config("htmx", {
+      capabilities = capabilities,
+      filetypes = { "html", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+    })
+    vim.lsp.config("vue_ls", {
+      capabilities = capabilities,
+      init_options = {
+        typescript = {
+          tsdk = utils.getTypescriptPath(),
+        },
+      },
+      settings = {
+        vue = {
+          format = {
+            template = {
+              initialIndent = true,
+            },
+            script = {
+              initialIndent = true,
+            },
+            style = {
+              initialIndent = true,
+            },
+          },
+        },
+      },
+    })
+    vim.lsp.config("vuels", {
+      settings = {
+        vetur = {
+          format = {
+            enable = false,
+          },
+        },
+      },
+    })
+    vim.lsp.config("ts_ls", {
+      cmd = { "typescript-language-server", "--stdio" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      capabilities = capabilities,
+      settings = {
+        diagnostics = {
+          ignoredCodes = { 7016, 80001, 6133, 80006 }, -- 7016 types , 80001 this could be a module bleh, 6133 unused param, 80006 can be an async function
+        },
+      },
+      -- root_dir = function(fname)
+      --   return lspconfig.util.root_pattern(".git")(fname)
+      -- return lspconfig.util.root_pattern("tsconfig.json")(fname)
+      --   or lspconfig.util.root_pattern("package.json", "jsconfig.json", ".git")(fname)
+      -- end,
+    })
+    vim.lsp.config("bashls", {
+      capabilities = capabilities,
+      filetypes = { "sh", "bash", "zsh" },
+    })
+
+    vim.lsp.enable({
+      "bashls",
+      "ts_ls",
+      "html",
+      "eslint",
+      "cssls",
+      "lua_ls",
+      "vue_ls",
+      "gopls",
+      "bashls",
+      "jsonls",
+      "dockerls",
+      "taplo",
+      "yamlls",
+    })
+
+    vim.lsp.enable("ts_ls")
   end,
 }

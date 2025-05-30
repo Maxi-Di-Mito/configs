@@ -1,6 +1,9 @@
 return {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   -- priority = 999,
+  dependencies = {
+    "mason-org/mason.nvim",
+  },
   config = function()
     local ok, null = pcall(require, "null-ls")
 
@@ -17,18 +20,17 @@ return {
       null.builtins.diagnostics.golangci_lint.with({
         extra_args = { "--disable errcheck" },
       }),
-      null.builtins.diagnostics.luacheck.with({
+      require("none-ls-luacheck.diagnostics.luacheck").with({
         extra_args = { "--global vim" },
       }),
+      -- null.builtins.diagnostics.luacheck.with({
+      --   extra_args = { "--global vim" },
+      -- }),
     }
 
     null.setup({
       sources = sources,
     })
-
-    --[[ local clientsToDilter = { ]]
-    --[[   'prettier' ]]
-    --[[ } ]]
 
     function FormattingFunction(doAsync, timeout)
       doAsync = doAsync or false
@@ -43,19 +45,6 @@ return {
           return true
         end,
       })
-
-      -- doesn work, check later
-      -- if not doAsync then
-      --   local current_line = vim.fn.line("$")
-      --   local last_line = vim.fn.getline(current_line)
-      --
-      --   if not vim.fn.empty(last_line) then
-      --     vim.cmd("a")
-      --     vim.cmd("normal! o")
-      --     -- vim.fn.append(current_line, "") -- Append an empty line
-      --     vim.cmd("w")
-      --   end
-      -- end
     end
   end,
 }
