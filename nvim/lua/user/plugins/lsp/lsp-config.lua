@@ -108,6 +108,8 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    vim.diagnostic.config({ virtual_text = true })
+
     local root_pattern = require("lspconfig.util").root_pattern
 
     vim.lsp.config("*", {
@@ -146,7 +148,7 @@ return {
     })
     vim.lsp.config("eslint", {
       capabilities = capabilities,
-      root_dir = root_pattern(".git"),
+      -- root_dir = root_pattern(".git"),
       codeActionOnSave = {
         rules = { "!jsdoc/" },
         mode = "all",

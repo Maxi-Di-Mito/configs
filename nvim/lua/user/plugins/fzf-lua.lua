@@ -54,7 +54,7 @@ return {
       "n",
       "<leader>lS",
       "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols({cwd_only=true})<cr>",
-      { desc = "Document Symbols" }
+      { desc = "Workspace Symbols" }
     )
     keymap.set("n", "<leader>lD", "<cmd>FzfLua lsp_workspace_diagnostics<cr>", { desc = "Workspace Diagnostics" })
   end,

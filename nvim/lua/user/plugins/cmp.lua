@@ -13,6 +13,35 @@ return {
     -- Snippets
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },
+    {
+      "zbirenbaum/copilot.lua",
+      event = "InsertEnter",
+      cmd = "Copilot",
+      config = function()
+        require("copilot").setup({
+          server = {
+            type = "binary",
+          },
+          suggestion = {
+            enabled = true,
+            auto_trigger = true,
+            keymap = {
+              accept = "<C-l>",
+              accept_word = false,
+              accept_line = false,
+              next = "<C-j>",
+              prev = "<C-k>",
+              dismiss = "<C-h>",
+            },
+          },
+          panel = { enabled = true, auto_refresh = true },
+        })
+        -- toggle copilot suggestion
+        vim.keymap.set("n", "<leader>ct", function()
+          require("copilot.suggestion").toggle_auto_trigger()
+        end, { desc = "Toggle Copilot Suggestion" })
+      end,
+    },
   },
   config = function()
     -- import nvim-cmp plugin safely
@@ -73,13 +102,15 @@ return {
       updateevents = "TextChanged,TextChangedI",
     })
 
-    vim.keymap.set({ "i", "s" }, "<c-l>", function()
+    -- vim.keymap.set({ "i", "s" }, "<c-l>", function()
+    vim.keymap.set({ "s" }, "<c-l>", function()
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       end
     end, { silent = true })
 
-    vim.keymap.set({ "i", "s" }, "<c-h>", function()
+    -- vim.keymap.set({ "i", "s" }, "<c-h>", function()
+    vim.keymap.set({ "s" }, "<c-h>", function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end

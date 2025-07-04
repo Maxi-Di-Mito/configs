@@ -164,6 +164,6 @@ alias gvim="~/configs/gvim.sh"
 alias cls=clear
 alias fgit="~/configs/scripts/fgit.sh"
 alias pfzf="~/configs/scripts/betterFzfPreview.sh"
-alias romd="bash ~/configs/scripts/roms-downloader/get-rom.bash"
+alias sfzf="~/configs/sfzf.sh"
 # export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH
 # source $(brew --prefix nvm)/nvm.sh
