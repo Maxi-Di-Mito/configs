@@ -167,3 +167,8 @@ alias pfzf="~/configs/scripts/betterFzfPreview.sh"
 alias sfzf="~/configs/sfzf.sh"
 # export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH
 # source $(brew --prefix nvm)/nvm.sh
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/maximilianodimito/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
