@@ -22,7 +22,9 @@ return {
         },
       },
     })
-
+    require("nvim-web-devicons").set_icon_by_filetype({
+      handlebars = "hbs",
+    })
     vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "File tree" })
   end,
 }

@@ -19,3 +19,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.opt_local.filetype = "gotexttmpl"
   end,
 })
+
+-- Handlebars
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.hbs", "*.handlebars" },
+  callback = function()
+    vim.opt_local.filetype = "html"
+  end,
+})

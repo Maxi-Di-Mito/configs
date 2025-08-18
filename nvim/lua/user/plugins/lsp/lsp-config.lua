@@ -180,7 +180,7 @@ return {
         },
         provideFormatter = true,
       },
-      filetypes = { "html", "gohtmltmpl" },
+      filetypes = { "html", "gohtmltmpl", "handlebars" },
     })
     vim.lsp.config("htmx", {
       capabilities = capabilities,
