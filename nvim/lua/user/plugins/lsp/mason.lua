@@ -4,6 +4,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       { "jayp0521/mason-null-ls.nvim" },
+      { "nvimtools/none-ls.nvim" },
       { "mason-org/mason-lspconfig.nvim" },
       { "gbprod/none-ls-luacheck.nvim" },
     },
@@ -24,12 +25,11 @@ return {
         ensure_installed = {
           "bashls",
           "ts_ls",
-          "eslint",
+          -- "eslint",
           "html",
-          "eslint",
           "cssls",
           "lua_ls",
-          "vue_ls",
+          "vue_ls@2.2.8",
           "gopls",
           "bashls",
           "jsonls",

@@ -7,10 +7,7 @@ return {
   },
   config = function()
     local utils = require("user.utils")
-
-    local lspconfig = require("lspconfig")
-    -- local mason_lspconfig = require("mason-lspconfig")
-
+    local util = require("lspconfig/util")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
     local keymap = vim.keymap -- for conciseness
@@ -73,8 +70,9 @@ return {
         keymap.set("n", "<leader>ld", "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", opts)
 
         opts.desc = "Show documentation"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-        --TODO CHECK K = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
+        keymap.set("n", "K", function()
+          vim.lsp.buf.hover({ border = "rounded" })
+        end, opts) -- show documentation for what is under cursor
 
         opts.desc = "Code Actions"
         keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
@@ -109,8 +107,6 @@ return {
     end
 
     vim.diagnostic.config({ virtual_text = true })
-
-    local root_pattern = require("lspconfig.util").root_pattern
 
     vim.lsp.config("*", {
       capabilities = capabilities,
@@ -147,17 +143,17 @@ return {
       },
     })
     vim.lsp.config("eslint", {
-      capabilities = capabilities,
-      -- root_dir = root_pattern(".git"),
+      -- capabilities = capabilities,
+      -- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
       codeActionOnSave = {
         rules = { "!jsdoc/" },
         mode = "all",
       },
-      -- root_dir = root_pattern(".eslintrc.js", ".eslintrc.json", "node_modules", ".git"),
       settings = {
         useFlatConfig = false,
-        -- workingDirectory = { mode = "auto" },
+        workingDirectory = { mode = "auto" },
       },
+      root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", "package.json", ".git" },
     })
     vim.lsp.config("gopls", {
       capabilities = capabilities,
@@ -209,17 +205,25 @@ return {
         },
       },
     })
-    vim.lsp.config("vuels", {
-      settings = {
-        vetur = {
-          format = {
-            enable = false,
-          },
-        },
-      },
-    })
+    -- vim.lsp.config("vtsls", {
+    --   capabilities = capabilities,
+    --   cmd = { "vtsls", "--stdio" },
+    --   filetypes = { "vue", "typescript", "javascript", "javascriptreact" },
+    -- })
+    -- vim.lsp.config("vuels", {
+    --   capabilities = capabilities,
+    --   cmd = { "vls" },
+    --   settings = {
+    --     vetur = {
+    --       format = {
+    --         enable = false,
+    --       },
+    --     },
+    --   },
+    -- })
     vim.lsp.config("ts_ls", {
       cmd = { "typescript-language-server", "--stdio" },
+      root_markers = { "tsconfig.json", "tsconfig.js", "jsconfig.js", "jsconfig.json", "package.json", ".git" },
       filetypes = {
         "javascript",
         "javascriptreact",
@@ -253,14 +257,14 @@ return {
       "cssls",
       "lua_ls",
       "vue_ls",
+      -- "vuels",
       "gopls",
       "bashls",
       "jsonls",
       "dockerls",
       "taplo",
       "yamlls",
+      -- "vtsls",
     })
-
-    vim.lsp.enable("ts_ls")
   end,
 }

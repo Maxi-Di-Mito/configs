@@ -4,6 +4,7 @@ return {
   dependencies = {
     "mason-org/mason.nvim",
   },
+  enabled = true,
   config = function()
     local ok, null = pcall(require, "null-ls")
 
@@ -34,17 +35,20 @@ return {
 
     function FormattingFunction(doAsync, timeout)
       doAsync = doAsync or false
-      timeout = timeout or 6000
+      timeout = timeout or 15000
       pcall(function()
         vim.cmd("EslintFixAll")
       end)
-      vim.lsp.buf.format({
-        async = doAsync,
-        timeout_ms = timeout,
-        filter = function()
-          return true
-        end,
-      })
+      pcall(function()
+        vim.lsp.buf.format({
+          async = doAsync,
+          silently = true,
+          timeout_ms = timeout,
+          filter = function()
+            return true
+          end,
+        })
+      end)
     end
   end,
 }
