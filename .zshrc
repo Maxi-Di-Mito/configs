@@ -154,6 +154,7 @@ export BAT_THEME=tokyo-theme-moon
 
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 export FZF_PREVIEW_ADVANCED=true
 
 #comands with fzf
