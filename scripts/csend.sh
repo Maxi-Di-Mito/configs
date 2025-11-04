@@ -1,1 +1,1 @@
-CROC_SECRET=sarasa croc --relay "home-server.com:9009" --pass sarasapass send --code sarasa --has imohash "$1"
+CROC_SECRET=sarasa croc --relay "home-server.com:9009" --pass sarasapass send --code sarasa --hash imohash "$1"
