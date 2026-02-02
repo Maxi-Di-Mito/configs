@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# export PATH=$PATH:/Users/maximilianodimito/Library/Python/3.9/bin
+export PATH=$PATH:/Users/maximilianodimito/Library/Python/3.9/bin
 
 if [[ -z $TMUX ]]; then
   #Madison-Reed ENVS
