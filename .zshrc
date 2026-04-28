@@ -168,6 +168,8 @@ alias pfzf="~/configs/scripts/betterFzfPreview.sh"
 alias sfzf="~/configs/sfzf.sh"
 alias csend="~/configs/scripts/csend.sh"
 alias cget="~/configs/scripts/cget.sh"
+alias ocodeb="opencode --model github-copilot/claude-opus-4.6 --agent build run"
+alias ocode="opencode --model github-copilot/claude-opus-4.6 --agent plan run"
 # export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH
 # source $(brew --prefix nvm)/nvm.sh
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
