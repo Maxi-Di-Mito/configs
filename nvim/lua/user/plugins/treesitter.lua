@@ -1,43 +1,43 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-context",
-    "neovim/nvim-lspconfig"
-  },
-  build = ":TSUpdate",
-  config = function()
-    local configs = require("nvim-treesitter.configs")
+require("nvim-treesitter").setup({
+  install_dir = vim.fn.stdpath("data") .. "/site",
+})
 
-    configs.setup({
-      ensure_installed = { "lua", "vim", "vimdoc", "query", "typescript", "javascript", "html", "vue" },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true, disable = { "yaml" } },
-      autopairs = {
-        enable = true,
-      },
-      auto_install = true,
-      -- disable treesitter on BIG files
-      ---@diagnostic disable-next-line: unused-local
-      disable = function(lang, bufnr)
-        return vim.api.nvim_buf_line_count(bufnr) > 5000
-      end,
-    })
+require("nvim-treesitter").install({
+  "lua", "vim", "vimdoc", "query", "typescript", "javascript", "html", "vue", "pug",
+})
 
-    vim.treesitter.language.register("html", "gohtmltmpl") --
+vim.treesitter.language.register("html", "gohtmltmpl")
 
-    local wk = require("which-key")
-
-    wk.add({
-      { "<leader>T", group = "Treesitter" },
-    })
-
-    vim.keymap.set("n", "<leader>Ti", ":TSConfigInfo<cr>", { desc = "Info" })
-
-    require("treesitter-context").setup()
-    require("ts_context_commentstring").setup({
-      enable_autocmd = false,
-    })
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if lang and vim.treesitter.language.add(lang) then
+      vim.treesitter.start(args.buf, lang)
+    end
   end,
-}
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    if vim.bo[args.buf].filetype == "yaml" then
+      return
+    end
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if lang and vim.treesitter.language.add(lang) then
+      vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
+
+local wk = require("which-key")
+
+wk.add({
+  { "<leader>T", group = "Treesitter" },
+})
+
+vim.keymap.set("n", "<leader>Ti", ":TSInfo<cr>", { desc = "Info" })
+
+require("treesitter-context").setup()
+require("ts_context_commentstring").setup({
+  enable_autocmd = false,
+})
